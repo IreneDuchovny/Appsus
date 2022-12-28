@@ -16,12 +16,12 @@ export function NoteAdd({ onSaveNote }) {
         setNote(noteService.getEmptyNote())
     }
 
-    return <section className="note-add">
+    return <section className="note-add flex justify-center align-center">
         <form onSubmit={saveNote}>
             <input
                 type="text"
                 name='txt'
-                placeholder = "Whats on your mind.."
+                placeholder = "Take a note..."
                 value={note.info.txt}
                 onChange={handleChange} />
         </form>
