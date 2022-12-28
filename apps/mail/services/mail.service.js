@@ -40,8 +40,13 @@ function _createMails() {
     var savedMails = storageService.loadFromStorage(MAIL_KEY)
     if (!savedMails || savedMails.length === 0) {
    
-   
-   storageService.saveToStorage(MAIL_KEY, mails) } 
+    const mails = [
+        _createMail('Momo Tzur', 'Wassap?', 'Pick up!', 'momo@gmail.com'),
+        _createMail('FrogyLift','Job interview', 'Hello from FrogyLift! we are excited to interview you...', 'frogyLift@frogy.com'),
+    ]
+    
+    console.log('savedMails', savedMails);
+    storageService.saveToStorage(MAIL_KEY, mails) } 
    
 }
 
