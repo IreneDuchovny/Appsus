@@ -1,0 +1,16 @@
+/* .starred-checkbox {
+    visibility:hidden;
+    font-size:30px;
+    cursor:pointer;
+}
+.starred-checkbox:before {
+   content: "\f005";
+   position: absolute;
+   visibility:visible;
+}
+.starred-checkbox:checked:before {
+   content: "\f006";
+   position: absolute;
+} */
+
+
