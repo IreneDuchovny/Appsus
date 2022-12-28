@@ -14,14 +14,16 @@ const MAIL_KEY = 'mailsDB'
 _createMails()
 
 //creates a mail
-function _createMail(subject, body, to) {
+function _createMail(name, subject, body, to) {
     return {
         id: utilService.makeId(),
+        name: name,
         subject: subject,
         body: body,
         from: loggedinUser.email,
         to: to,
         isRead: false,
+        isStarred: false,
         sentAt: Date.now(),
     }
 }
@@ -36,8 +38,8 @@ function query() {
 //creates mails if none exist
 function _createMails() {
     const mails = [
-        _createMail('Wassap?', 'Pick up!', 'momo@gmail.com'),
-        _createMail('Job interview', 'Hello from FrogyLift! we are excited to interview you...', 'frogyLift@frogy.com'),
+        _createMail('Momo Tzur', 'Wassap?', 'Pick up!', 'momo@gmail.com'),
+        _createMail('FrogyLift','Job interview', 'Hello from FrogyLift! we are excited to interview you...', 'frogyLift@frogy.com'),
     ]
     var savedMails = storageService.loadFromStorage(MAIL_KEY)
     savedMails || storageService.saveToStorage(MAIL_KEY, mails)
