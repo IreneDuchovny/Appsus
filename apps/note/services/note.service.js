@@ -35,7 +35,7 @@ function saveNote(note) {
 }
 
 function getEmptyNote(type = '', isPinned = false) {
-    return { type, isPinned, info: {}, style: {} }
+    return { type, isPinned, info: {txt:''}, style: {} }
 }
 
 function getDefaultFilter() {
