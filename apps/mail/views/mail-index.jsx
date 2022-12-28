@@ -30,7 +30,7 @@ function loadMails() {
 
     return <div>
 <MailHeader className="mail-header"/>
-<div className="main-layout flex space-between">
+<div className="main-layout flex ">
 <div className="side-bar">
     <button className="compose-btn">Compose</button>
     <ul className="side-bar-list clean-list">

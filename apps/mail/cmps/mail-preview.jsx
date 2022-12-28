@@ -8,23 +8,40 @@ export function MailPreview({ mail }) {
     // const [isTrash, setIsTrash] = useState(mail.isTrash)
     // const [isUnread, setIsUnread] = useState(mail.isUnread)
 
+    const [isExpanded, setIsExpanded] = useState(false)
+    return <div className="expend-prev flex column" >
+        <div className="main-mail-preview flex row space-between" onClick={() => {
+            setIsExpanded(!isExpanded)
+        }}>
+            {/* <input className="starred-checkbox fa-star-o" title="Starred email"  defaultChecked={isStarred ? 'cheched' : ''} /> */}
+            <div className="from-email">{mail.name}</div>
+            <div className="email-subject">{mail.subject}</div>
+            <div className="email-short-body">{mail.body}</div>
+            {/* create short body */}
+            <div className="email-date">{mail.sentAt}</div>
+        </div>
 
-    return <div className="main-mail-preview flex space-between">
-        {/* <input className="starred-checkbox fa-star-o" title="Starred email"  defaultChecked={isStarred ? 'cheched' : ''} /> */}
-<div className="form-email">{mail.name}</div>
-<div className="email-subject">{mail.subject} </div>
-<div className="email-short-body">{mail.body}</div>
-{/* create short body */}
-<div className="email-date">{mail.sentAt}</div>
-
-
-
-
-
-
-
-
-            {/* <input type="checkbox" id={mail.id} name="email-checkbox" value="email"/> */ }
+        <div className="expended-mail" hidden={!isExpanded}>
+            <div className="expended-mail-btn flex row flex-end">
+                <button className="fa fa-star-o" title="Starred email" onClick={() => {
+                    setIsStarred(!isStarred)
+                }}></button>
+                <button className="fa fa-trash-o" title="Delete email"></button>
+                <button className="fa fa-expand" title="Expand"></button>
+            </div>
+            <h3 className="email-subject">{mail.subject} </h3>
+            <p className="from-email">from: {mail.name} {`<${mail.to}>`}</p>
+            <p className="to-email">To: me</p>
+            <p className="email-body">{mail.body}</p>
+        </div>
     </div>
+
+
+
+
+
+
+    {/* <input type="checkbox" id={mail.id} name="email-checkbox" value="email"/> */ }
+
 
 }

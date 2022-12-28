@@ -14,3 +14,27 @@
 } */
 
 
+.expended-mail{
+   background-color: var(--white);
+   padding:10px;
+}
+
+.main-mail-preview{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px;
+   border-bottom: 1px solid var(--ptxt2);
+}
+
+.from-email, .subject-email, .date-email{
+ width:25%;
+}
+
+
+
+
+.expended-mail button{
+   margin: 5px;
+}

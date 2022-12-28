@@ -9,7 +9,7 @@ export function MailList({ mails }) {
         <ul className="mail-list clean-list">
             {mails.map(mail => <li key={mail.id} className="mail-preview">
                 <MailPreview mail={mail} />
-                <hr />
+               
             </li>)}
         </ul>
     </div>
