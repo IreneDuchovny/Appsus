@@ -3,6 +3,7 @@ import { storageService } from '../../../services/storage.service.js'
 import { utilService } from "../../../services/util.service.js"
 
 const NOTE_KEY = 'noteDB'
+_createNotes()
 
 export const noteService = {
     query,
@@ -42,18 +43,19 @@ function getDefaultFilter() {
 }
 
 function _createNotes() {
-    let notes = utilService.loadFromStorage(NOTE_KEY)
+    let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = []
-        notes.unshift(_createNote('note-txt', true))
-        notes.unshift(_createNote('note-txt', false))
-        notes.unshift(_createNote('note-txt', false))
-        utilService.saveToStorage(NOTE_KEY, notes)
+        notes.push(_createNote('note-txt','zoom meating on mondey', true))
+        notes.push(_createNote('note-txt','workout with momo', false))
+        notes.push(_createNote('note-txt', 'life is good', false))
+        storageService.saveToStorage(NOTE_KEY, notes)
     }
 }
 
-function _createNote(type, isPinned) {
+function _createNote(type,txt, isPinned) {
     const note = getEmptyNote(type, isPinned)
     note.id = utilService.makeId()
-    note.info.txt = utilService.makeLorem(10)
+    note.info.txt = txt
+    return note
 }
