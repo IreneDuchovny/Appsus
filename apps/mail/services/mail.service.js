@@ -37,13 +37,12 @@ function query() {
 
 //creates mails if none exist
 function _createMails() {
-    const mails = [
-        _createMail('Momo Tzur', 'Wassap?', 'Pick up!', 'momo@gmail.com'),
-        _createMail('FrogyLift','Job interview', 'Hello from FrogyLift! we are excited to interview you...', 'frogyLift@frogy.com'),
-    ]
     var savedMails = storageService.loadFromStorage(MAIL_KEY)
-    console.log('savedMails', savedMails);
-   (savedMails.length === 0) ? storageService.saveToStorage(MAIL_KEY, mails) : ''
+    if (!savedMails || savedMails.length === 0) {
+   
+   
+   storageService.saveToStorage(MAIL_KEY, mails) } 
+   
 }
 
 //returns a promise with the mail
