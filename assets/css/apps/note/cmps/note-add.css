@@ -1,0 +1,16 @@
+.note-add{
+    margin-top: 1em;
+    padding: 0 120px;
+    
+}
+
+.note-add form{
+    width: 100%;
+
+}
+
+.note-add form input{
+    width: 100%;
+    height: 50px;
+    font-size: 1.5em;
+}

@@ -1,0 +1,18 @@
+.note-list{
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-auto-flow: dense;
+    gap: 10px;
+    padding: 60px;
+    width: auto;
+    margin: 0 auto;
+
+}
+
+.note-list li{
+    border: 1px solid gray;
+    min-height: 200px;
+    text-align: center;
+    padding: 1em;
+    position: relative;
+    
+}
