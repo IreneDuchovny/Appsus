@@ -33,7 +33,7 @@ function loadMails() {
 <div className="main-layout flex space-between">
 <div className="side-bar">
     <button className="compose-btn">Compose</button>
-    <ul className="side-bar-list">
+    <ul className="side-bar-list clean-list">
         <li className="side-bar-item">Inbox</li>
         <li className="side-bar-item">Starred</li>
         <li className="side-bar-item">Sent </li>
