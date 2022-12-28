@@ -8,6 +8,7 @@ export function MailDetails() {
  
       const [mail, setMail] = useState(null)
       const { mailId } = useParams()
+      const navigate = useNavigate()
 
       useEffect(() => {
          loadMail()
@@ -21,7 +22,12 @@ export function MailDetails() {
    }
     if (!mail) return <div>Loading...</div>
     return <div className="full-details-mail">
-         <div className="title-mail flex space-between"> <h3 className="email-subject">{mail.subject} </h3><button className="back fa-arrow-back" ></button></div>
+         <div className="title-mail flex space-between"> <h3 className="email-subject">{mail.subject} </h3>
+         <div className="icons-btns">
+         <button className="back fa fa-arrow-left" onClick= {()=> navigate('/mail')} ></button>
+         <button className="fa fa-trash-o" title="Delete email" onClick={()=>onDeleteMail(mail.id)}></button>
+         </div>
+         </div>
             <p className="from-email">from: {mail.name} {`<${mail.to}>`}</p>
             <p className="to-email">To: me</p>
             <p className="email-body">{mail.body}</p>

@@ -41,9 +41,9 @@ function loadMails() {
     <button className="compose-btn"> <Link to="/mail/compose"> Compose</Link></button>
     {/* <button className="compose-btn"> <Route element={<MailCompose/>} path="/mail/compose"/> Compose</button> */}
 
-    <ul className="side-bar-list clean-list">
+    <ul className="side-bar-list  clean-list">
         <li className="side-bar-item">Inbox</li>
-        <li className="side-bar-item">Starred</li>
+        <li className="side-bar-item ">Starred</li>
         <li className="side-bar-item">Sent </li>
         <li className="side-bar-item">Drafts</li>
         <li className="side-bar-item">Unread</li>

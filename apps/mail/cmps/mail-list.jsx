@@ -14,6 +14,6 @@ export function MailList({ mails, onDeleteMail }) {
 
             </li>)}
         </ul>
-            || <Outlet />}
+            || <Outlet onDeleteMail={onDeleteMail} />}
     </div>)
 }
