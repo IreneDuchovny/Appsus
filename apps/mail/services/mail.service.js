@@ -42,7 +42,8 @@ function _createMails() {
         _createMail('FrogyLift','Job interview', 'Hello from FrogyLift! we are excited to interview you...', 'frogyLift@frogy.com'),
     ]
     var savedMails = storageService.loadFromStorage(MAIL_KEY)
-    savedMails || storageService.saveToStorage(MAIL_KEY, mails)
+    console.log('savedMails', savedMails);
+   (savedMails.length === 0) ? storageService.saveToStorage(MAIL_KEY, mails) : ''
 }
 
 //returns a promise with the mail

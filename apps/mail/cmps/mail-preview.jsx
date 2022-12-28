@@ -1,6 +1,8 @@
+
 const { Link } = ReactRouterDOM
 const { useEffect, useState, useRef } = React
-export function MailPreview({ mail }) {
+
+export function MailPreview({ mail, onDeleteMail }) {
     const [isStarred, setIsStarred] = useState(mail.isStarred)
     // const [isRead, setIsRead] = useState(mail.isRead)
     // const [isSent, setIsSent] = useState(mail.isSent)
@@ -9,6 +11,8 @@ export function MailPreview({ mail }) {
     // const [isUnread, setIsUnread] = useState(mail.isUnread)
 
     const [isExpanded, setIsExpanded] = useState(false)
+
+
     return <div className="expend-prev flex column" >
         <div className="main-mail-preview flex row space-between" onClick={() => {
             setIsExpanded(!isExpanded)
@@ -23,11 +27,12 @@ export function MailPreview({ mail }) {
 
         <div className="expended-mail" hidden={!isExpanded}>
             <div className="expended-mail-btn flex row flex-end">
-                <button className="fa fa-star-o" title="Starred email" onClick={() => {
+                <button className={isStarred ? "fa fa-star" : "fa fa-star-o"} title="Starred email" onClick={() => {
                     setIsStarred(!isStarred)
+                    
                 }}></button>
-                <button className="fa fa-trash-o" title="Delete email"></button>
-                <button className="fa fa-expand" title="Expand"></button>
+                <button className="fa fa-trash-o" title="Delete email" onClick={()=>onDeleteMail(mail.id)}></button>
+                <Link to={`/mail/${mail.id}`}><button className="fa fa-expand" title="Expand"></button> </Link>
             </div>
             <h3 className="email-subject">{mail.subject} </h3>
             <p className="from-email">from: {mail.name} {`<${mail.to}>`}</p>

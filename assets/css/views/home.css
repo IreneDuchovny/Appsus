@@ -1,0 +1,14 @@
+.main-page-container{
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin-top: 5%;
+    text-align: center;
+    
+}
+
+
+.mail-container, .notes-container, .books-container {
+border: 2px solid var(--border-color);
+padding: 50px 100px 50px 100px;
+   border-radius: 18px;
+}

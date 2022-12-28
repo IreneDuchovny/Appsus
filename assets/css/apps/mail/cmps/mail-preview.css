@@ -32,9 +32,14 @@
  width:25%;
 }
 
-
-
-
 .expended-mail button{
    margin: 5px;
 }
+
+.fa-star{
+   color: var(--yellow);
+   /* font-size: 20px; */
+   cursor: pointer;
+}
+
+
