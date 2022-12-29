@@ -35,7 +35,8 @@ function saveNote(note) {
 }
 
 function getEmptyNote(type = '', isPinned = false) {
-    return { type, isPinned, info: {txt:''}, style: {} }
+    const field = type === 'note-txt'? 'txt':'url'
+    return { type, isPinned, info: {title:'',[field]:''}, style: {} }
 }
 
 function getDefaultFilter() {
@@ -46,16 +47,17 @@ function _createNotes() {
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = []
-        notes.push(_createNote('note-txt','zoom meating on mondey', true))
-        notes.push(_createNote('note-txt','workout with momo', false))
-        notes.push(_createNote('note-txt', 'life is good', false))
+        notes.push(_createNote('note-txt','My T','zoom meating on mondey', true))
+        notes.push(_createNote('note-txt','your T','workout with momo', false))
+        notes.push(_createNote('note-txt','our T', 'life is good', false))
         storageService.saveToStorage(NOTE_KEY, notes)
     }
 }
 
-function _createNote(type,txt, isPinned) {
+function _createNote(type,title,txt, isPinned) {
     const note = getEmptyNote(type, isPinned)
     note.id = utilService.makeId()
+    note.info.title = title
     note.info.txt = txt
     return note
 }

@@ -1,5 +1,5 @@
 .note-list{
-    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-columns: repeat(auto-fit, 420px);
     grid-auto-flow: dense;
     gap: 10px;
     padding: 60px;
