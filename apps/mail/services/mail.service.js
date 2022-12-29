@@ -9,6 +9,7 @@ export const mailService = {
     query,
     getMailById,
     deleteMail,
+    sendMail,
 }
 const MAIL_KEY = 'mailsDB'
 _createMails()
@@ -61,5 +62,12 @@ function getMailById(mailId) {
 function deleteMail(mailId) {
     return asyncStorageService.remove(MAIL_KEY, mailId).catch(err => {
         console.log('Mail not REMOVED', err);
+    })
+}
+
+function sendMail( subject, body, to) {
+    const mail = _createMail( loggedinUser.fullName, subject, body, to)
+    return asyncStorageService.post(MAIL_KEY, mail).catch(err => {
+        console.log('Mail not SENT', err);
     })
 }

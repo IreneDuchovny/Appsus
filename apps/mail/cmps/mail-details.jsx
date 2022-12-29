@@ -4,7 +4,7 @@ const { useNavigate, useParams, Link } = ReactRouterDOM
 import { mailService } from '../services/mail.service.js'
 
 
-export function MailDetails() {
+export function MailDetails({onDeleteMail}) {
  
       const [mail, setMail] = useState(null)
       const { mailId } = useParams()
