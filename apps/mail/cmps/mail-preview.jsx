@@ -25,6 +25,20 @@ export function MailPreview({ mail, onDeleteMail, onSaveMail }) {
         mail.isStarred = !isStarred
         onSaveMail(mail)
     }
+function formatDate(timestamp) {
+    const date = new Date(timestamp);
+
+const options = {
+  weekday: 'short',
+  hour: 'numeric',
+  minute: 'numeric',
+};
+
+const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+
+return formattedDate
+
+}
 
     return <div className="expend-prev flex column" >
         <div className={ isRead ? "main-mail-preview flex row space-between" : "main-mail-preview flex row space-between unread"} onClick={() => {
@@ -35,7 +49,7 @@ export function MailPreview({ mail, onDeleteMail, onSaveMail }) {
             <div className="email-subject">{mail.subject}</div>
             <div className="email-short-body">{mail.body}</div>
             {/* create short body */}
-            <div className="email-date">{mail.sentAt}</div>
+            <div className="email-date">{formatDate(mail.sentAt)}</div>
         </div>
 
         <div className="expended-mail" hidden={!isExpanded}>

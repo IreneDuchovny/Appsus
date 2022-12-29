@@ -34,43 +34,54 @@ export function MailIndex() {
     }
     function onDeleteMail(mailId) {
         setIsLoading(true)
-        mailService.deleteMail(mailId)
-            .then(() => {
-                loadMails()
-            })
-    }
+        mailService.getMailById(mailId).then(mail => {
+            if (mail.status === 'trash') {
+                mailService.deleteMail(mailId)
+                    .then(() => {
+                        loadMails()
+                    })
+            } else {
+                mail.status = 'trash'
+                // console.log('moved to trash')
+                mailService.saveMail(mail)
+                    .then(() => {
+                        loadMails()
+                    }
+                    )
+            }
+        })}
 
     function onSendMail(subject, body, to) {
-        setIsLoading(true)
-        mailService.sendMail(subject, body, to)
-            .then(() => {
-                loadMails()
-            })
-    }
+                setIsLoading(true)
+                mailService.sendMail(subject, body, to)
+                    .then(() => {
+                        loadMails()
+                    })
+            }
 
-    function onSaveMail(mail){
-        mailService.saveMail(mail)
-    }
+    function onSaveMail(mail) {
+                mailService.saveMail(mail)
+            }
 
     function onSetFilter(filterBy) {
-        setFilterBy(filterBy)
-    }
+                setFilterBy(filterBy)
+            }
 
     return <div>
-        <MailHeader className="mail-header" />
-        <div className="main-layout flex ">
-            <div className="side-bar">
-                <Link to="/mail/new/compose"> <button className="compose-btn">  Compose</button></Link>
-                {/* <button className="compose-btn"> <Route element={<MailCompose/>} path="/mail/compose"/> Compose</button> */}
-                <MailFolderList onSetFilter={onSetFilter} />
+            <MailHeader className="mail-header" />
+            <div className="main-layout flex ">
+                <div className="side-bar">
+                    <Link to="/mail/new/compose"> <button className="compose-btn">  Compose</button></Link>
+                    {/* <button className="compose-btn"> <Route element={<MailCompose/>} path="/mail/compose"/> Compose</button> */}
+                    <MailFolderList onSetFilter={onSetFilter} />
+
+                </div>
+                <div className="mail-list">
+                    {/* todo:add tabs+paging in here */}
+                    {isLoading ? <div>Loading...</div> : <MailList mails={mails} onSaveMail={onSaveMail} onDeleteMail={onDeleteMail} onSendMail={onSendMail} />}
+                </div>
 
             </div>
-            <div className="mail-list">
-                {/* todo:add tabs+paging in here */}
-                {isLoading ? <div>Loading...</div> : <MailList mails={mails} onSaveMail={onSaveMail} onDeleteMail={onDeleteMail} onSendMail={onSendMail} />}
-            </div>
-
         </div>
-    </div>
-}
+    }
 

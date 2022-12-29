@@ -34,7 +34,7 @@ function _createMail(name, subject, body, to, status = 'inbox') {
 
 //returns a promise with all mails
 
-//TODO: sortby
+
 function query(filterBy = getDefaultFilter()) {
 
     return asyncStorageService.query(MAIL_KEY)
@@ -52,6 +52,13 @@ function query(filterBy = getDefaultFilter()) {
                 if (mail1[filterBy.sortBy] > mail2[filterBy.sortBy]) return 1
             })
         }
+        if (filterBy.isRead !== undefined) {
+            mails = mails.filter(mail => mail.isRead === filterBy.isRead)
+        }
+        if (filterBy.isStarred !== undefined) {
+            mails = mails.filter(mail => mail.isStarred === filterBy.isStarred)
+        }
+
         return mails
     })
 }
