@@ -26,6 +26,7 @@
    align-items: center;
    padding: 10px;
    border-bottom: 1px solid var(--ptxt2);
+   cursor: pointer;
 }
 
 .from-email, .subject-email, .date-email{
@@ -43,3 +44,6 @@
 }
 
 
+.unread{
+   font-weight: bolder;
+}

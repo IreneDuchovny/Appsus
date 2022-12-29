@@ -1,3 +1,5 @@
 .mail-list{
 background-color: var(--mail-list-color);
+width: 75vw;
 }
+
