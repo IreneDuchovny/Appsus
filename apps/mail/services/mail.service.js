@@ -44,8 +44,12 @@ function _createMails() {
     const mails = [
         _createMail('Momo Tzur', 'Wassap?', 'Pick up!', 'momo@gmail.com'),
         _createMail('FrogyLift','Job interview', 'Hello from FrogyLift! we are excited to interview you...', 'frogyLift@frogy.com'),
+        _createMail('Covid-19','Corona virus', 'Corona virus is a big problem, please stay home!', 'covid19@gmail.com'),
+        _createMail('Nasa','SpaceX', 'SpaceX is going to launch a rocket soon!', 'nasa@nasa.com'),
+        _createMail('Gmail','Welcome!', 'Welcome to Gmail! We hope you enjoy your stay!', 'gmailStaff@gmail.com'),
+        _createMail('Bitcoin','Bitcoin', 'Bitcoin is a digital currency that is decentralized', 'bitcoin@digital.com'),
+        _createMail('Amazon','Amazon Prime', 'Get Amazon Prime for only 10$ a month!', 'amazon-prime@aws.com')
     ]
-    
     console.log('savedMails', savedMails);
     storageService.saveToStorage(MAIL_KEY, mails) } 
    

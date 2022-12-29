@@ -25,7 +25,7 @@ export function MailDetails({onDeleteMail}) {
          <div className="title-mail flex space-between"> <h3 className="email-subject">{mail.subject} </h3>
          <div className="icons-btns">
          <button className="back fa fa-arrow-left" onClick= {()=> navigate('/mail')} ></button>
-         <button className="fa fa-trash-o" title="Delete email" onClick={()=>onDeleteMail(mail.id)}></button>
+         <button className="fa fa-trash-o" title="Delete email" onClick={()=>{onDeleteMail(mail.id); navigate('/mail')}}></button>
          </div>
          </div>
             <p className="from-email">from: {mail.name} {`<${mail.to}>`}</p>

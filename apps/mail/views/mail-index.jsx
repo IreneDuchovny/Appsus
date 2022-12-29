@@ -32,6 +32,7 @@ export function MailIndex() {
             })
     }
     function onDeleteMail(mailId) {
+        setIsLoading(true)
         mailService.deleteMail(mailId)
             .then(() => {
                 loadMails()

@@ -2,10 +2,7 @@
 const { useState, useEffect } = React
 const { useNavigate, useParams, Link, useLocation } = ReactRouterDOM
 
-
-export function MailCompose({onSendMail}) {
-
-
+export function MailCompose({ onSendMail }) {
 
     const [subject, setSubject] = useState('')
     const [body, setBody] = useState('')
@@ -31,8 +28,6 @@ export function MailCompose({onSendMail}) {
         ev.preventDefault()
         onSendMail(subject, body, to)
         navigate('/mail')
-  
-        
     }
 
     return <div className="mail-compose-container ">
@@ -40,7 +35,7 @@ export function MailCompose({onSendMail}) {
             <div className="new-msg-hdr">New message</div>
 
             <input className="recipients" name="to" type="email" id="recipients" placeholder="recipients" onChange={handleChange} />
-            <label htmlFor="recipients" >To</label>
+            <label htmlFor="recipients" ></label>
 
             <input className="subject" name="subject" id="subject" placeholder="subject" onChange={handleChange} />
             <label htmlFor="subject"></label>
