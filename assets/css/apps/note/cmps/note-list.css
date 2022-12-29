@@ -16,3 +16,11 @@
     position: relative;
     
 }
+
+.note-list li .note-btns{
+    display: none;
+}
+
+.note-list li:hover .note-btns{
+    display: flex;
+}

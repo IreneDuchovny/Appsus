@@ -4,23 +4,23 @@ const { Link } = ReactRouterDOM
 import { noteService } from "../services/note.service.js"
 
 import { NoteList } from "../cmps/note-list.jsx"
-import { NoteAdd } from "../cmps/note-add.jsx"
+import { NoteEdit } from "../cmps/note-edit.jsx"
 
 export function NoteIndex() {
 
     const [notes, setNotes] = useState([])
-    const isLoading = useRef(null)
+    const [isLoading,setIsLoading] = useState(null)
 
     useEffect(() => {
         loadNotes()
     }, [])
 
     function loadNotes() {
-        isLoading.current = true
+        setIsLoading(true)
         noteService.query()
             .then(notesToUpdate => {
                 setNotes(notesToUpdate)
-                isLoading.current = false
+                setIsLoading(false)
             })
     }
 
@@ -36,16 +36,16 @@ export function NoteIndex() {
         noteService.saveNote(note)
             .then(note => {
                 setNotes(prevNotes => {
-                    prevNotes.push(note)
+                    prevNotes.unshift(note)
                     return JSON.parse(JSON.stringify(prevNotes))
                 })
             })
     }
 
     return <section className="note-index">
-        {isLoading.current && <h2>loading..</h2>}
-        {!isLoading.current && <NoteAdd onSaveNote={onSaveNote} />}
-        {!isLoading.current && <NoteList notes={notes} onRemoveNote={onRemoveNote} />}
+        {isLoading && <h2>loading..</h2>}
+        {!isLoading && <NoteEdit onSaveNote={onSaveNote} />}
+        {!isLoading && <NoteList notes={notes} onRemoveNote={onRemoveNote} />}
     </section>
 
 }

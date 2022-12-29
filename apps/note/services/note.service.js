@@ -50,14 +50,17 @@ function _createNotes() {
         notes.push(_createNote('note-txt','My T','zoom meating on mondey', true))
         notes.push(_createNote('note-txt','your T','workout with momo', false))
         notes.push(_createNote('note-txt','our T', 'life is good', false))
+        notes.push(_createNote('note-img','Image', 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Logo_Play_512px_clr_nGVTgYY.max-600x600.png', false))
+        notes.push(_createNote('note-video','Video', 'https://www.youtube.com/embed/tgbNymZ7vqY', false))
         storageService.saveToStorage(NOTE_KEY, notes)
     }
 }
 
-function _createNote(type,title,txt, isPinned) {
+function _createNote(type,title,content, isPinned) {
+    const field = type === 'note-txt'? 'txt':'url'
     const note = getEmptyNote(type, isPinned)
     note.id = utilService.makeId()
     note.info.title = title
-    note.info.txt = txt
+    note.info[field] = content
     return note
 }

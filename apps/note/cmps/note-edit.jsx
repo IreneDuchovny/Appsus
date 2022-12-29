@@ -2,7 +2,7 @@ const { useState, useEffect, useRef } = React
 
 import { noteService } from "../services/note.service.js"
 
-export function NoteAdd({ onSaveNote }) {
+export function NoteEdit({ onSaveNote }) {
     const [noteType, setNoteType] = useState('txt')
     const [note, setNote] = useState(noteService.getEmptyNote(noteType))
     const [isExpended, setIsExpended] = useState(false)
@@ -46,7 +46,7 @@ export function NoteAdd({ onSaveNote }) {
     }
 
     return (
-        <section className="note-add flex justify-center align-center">
+        <section className="note-edit flex justify-center align-center">
             <form onSubmit={saveNote}>
 
                 {isExpended && <input type="text"
@@ -63,7 +63,7 @@ export function NoteAdd({ onSaveNote }) {
                         placeholder={placeHolderRef.current}
                         value={note.info[fieldRef.current]}
                         onChange={handleChange} />
-                    <section className="note-add-btns flex space-between">
+                    <section className="note-edit-btns flex space-between">
                         <button type="button" onClick={() => onNoteTypeChange('note-txt')}>T</button>
                         <button type="button" onClick={() => onNoteTypeChange('note-img')}>I</button>
                         <button type="button" onClick={() => onNoteTypeChange('note-video')}>V</button>
