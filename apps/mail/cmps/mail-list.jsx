@@ -1,19 +1,22 @@
 
 import { MailPreview } from './mail-preview.jsx'
+import { MailCompose } from './mail-compose.jsx'
+import { MailDetails } from './mail-details.jsx'
 const { useEffect, useState, useRef } = React
 const { Outlet, useParams } = ReactRouterDOM
 const { Link } = ReactRouterDOM
 
-export function MailList({ mails, onDeleteMail }) {
-    const { mailId } = useParams()
+export function MailList({ mails, onDeleteMail, onSendMail }) {
+    const { mailId, compose } = useParams()
 
+//    console.log(useParams());
     return (<div>
-        {!mailId && <ul className="mail-list clean-list">
+        {!(mailId || compose)  && <ul className="mail-list clean-list">
             {mails.map(mail => <li key={mail.id} className="mail-preview">
                 <MailPreview mail={mail} onDeleteMail={onDeleteMail} />
 
             </li>)}
         </ul>
-            || <Outlet onDeleteMail={onDeleteMail} />}
+            || (mailId && <MailDetails onDeleteMail={onDeleteMail}  /> || <MailCompose  onSendMail={onSendMail} />)}
     </div>)
 }

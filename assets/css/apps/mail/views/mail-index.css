@@ -1,12 +1,13 @@
 .side-bar{
     width:20vw;
+    /* padding: 0px 12px 0px 16px; */
     /* border-right: 1 px solid black; */
 }
 
 .side-bar-item{
     display: flex;
     width: 20vw;
-    height: 6vh;
+    height: 4vh;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -14,7 +15,7 @@
     align-items: center;
     /* text-align: center; */
     line-height: 2vh;
-    font-size: 1.25em;
+    /* font-size: 1.25em; */
     font-weight: bold;
     cursor: pointer;
 }
@@ -28,14 +29,10 @@
     border: 1px solid var(--border-color2);
     /* background: linear-gradient(to right, #FF00FF, #0000FF, #660099); */
     background: linear-gradient(to right, #fc3c71, #fa3ca2, #7e3bea, #3e49fe,#11c8f3);
-
-    
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     cursor: pointer; 
 }
-
-
 
 .side-bar-item:hover{
     background-color: var(--mail-list-color);
