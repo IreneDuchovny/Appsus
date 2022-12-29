@@ -33,7 +33,7 @@ function NoteImg({ content }) {
 
 function NoteVideo({ content }) {
     return (
-        <iframe width="380" height="315" frameborder="0" allowfullscreen 
+        <iframe width="380" height="315" frameBorder="0" allowFullScreen 
             src={content}>
         </iframe>
     )

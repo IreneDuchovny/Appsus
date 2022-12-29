@@ -24,3 +24,14 @@
 .note-list li:hover .note-btns{
     display: flex;
 }
+
+.edit-modal{
+    position: absolute;
+    border: 1px solid darkgray;
+    width: 50vh;
+    padding: 1em;
+    translate: -50%;
+    left: 50%;
+    background-color: white;
+    z-index: 999;
+}

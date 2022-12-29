@@ -2,12 +2,20 @@ const { useState, useEffect, useRef } = React
 
 import { noteService } from "../services/note.service.js"
 
-export function NoteEdit({ onSaveNote }) {
+export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
     const [noteType, setNoteType] = useState('txt')
     const [note, setNote] = useState(noteService.getEmptyNote(noteType))
     const [isExpended, setIsExpended] = useState(false)
     const placeHolderRef = useRef('Take a note...')
     const fieldRef = useRef('txt')
+
+    useEffect(() => {
+        if (noteToEdit) {
+            setNote(noteToEdit)
+            onNoteTypeChange(noteToEdit.type)
+            setIsExpended(true)
+        }
+    }, [])
 
     function handleChange({ target }) {
         let { name: field, value } = target
@@ -16,14 +24,15 @@ export function NoteEdit({ onSaveNote }) {
 
     function saveNote(ev) {
         ev.preventDefault()
-        if(note.type === 'note-video') checkVideoUrl()
+        if (note.type === 'note-video') checkVideoUrl()
         onSaveNote(note)
         setIsExpended(false)
         setNote(noteService.getEmptyNote(noteType))
+        endEditing()
     }
 
-    function checkVideoUrl(){
-        note.info.url = note.info.url.replace('watch?v=','embed/')
+    function checkVideoUrl() {
+        note.info.url = note.info.url.replace('watch?v=', 'embed/')
     }
 
     function onNoteTypeChange(newNoteType) {
@@ -42,7 +51,15 @@ export function NoteEdit({ onSaveNote }) {
                 break;
         }
         setNoteType(newNoteType)
-        setNote(noteService.getEmptyNote(newNoteType))
+        if(!noteToEdit) setNote(noteService.getEmptyNote(newNoteType))
+    }
+
+    function onClose() {
+        if (noteToEdit) {
+            endEditing()
+        } else {
+            setIsExpended(false)
+        }
     }
 
     return (
@@ -54,7 +71,7 @@ export function NoteEdit({ onSaveNote }) {
                     placeholder='Enter Title'
                     value={note.info.title}
                     onChange={handleChange}
-                     />}
+                />}
                 <label htmlFor="">
                     <input
                         onClick={() => setIsExpended(true)}
@@ -63,14 +80,14 @@ export function NoteEdit({ onSaveNote }) {
                         placeholder={placeHolderRef.current}
                         value={note.info[fieldRef.current]}
                         onChange={handleChange} />
-                    <section className="note-edit-btns flex space-between">
+                    {!noteToEdit && <section className="note-edit-btns flex space-between">
                         <button type="button" onClick={() => onNoteTypeChange('note-txt')}>T</button>
                         <button type="button" onClick={() => onNoteTypeChange('note-img')}>I</button>
                         <button type="button" onClick={() => onNoteTypeChange('note-video')}>V</button>
-                    </section>
+                    </section>}
                 </label>
                 <button type='submit' hidden={true}></button>
-                {isExpended && <button className='btn-close' type="button" onClick={() => setIsExpended(false)}>Close</button>}
+                {isExpended && <button className='btn-close' type="button" onClick={onClose}>Close</button>}
 
             </form>
         </section>
