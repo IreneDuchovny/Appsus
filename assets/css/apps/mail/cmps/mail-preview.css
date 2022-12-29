@@ -22,11 +22,13 @@
 .main-mail-preview{
    display: flex;
    flex-direction: row;
+   /* justify-content: start; */
    justify-content: space-between;
    align-items: center;
    padding: 10px;
    border-bottom: 1px solid var(--ptxt2);
    cursor: pointer;
+  
 }
 
 .from-email, .subject-email, .date-email{
