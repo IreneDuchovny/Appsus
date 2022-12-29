@@ -10,14 +10,17 @@ export const mailService = {
     getMailById,
     deleteMail,
     sendMail,
+    saveMail,
+    getDefaultFilter,
 }
 const MAIL_KEY = 'mailsDB'
 _createMails()
 
 //creates a mail
-function _createMail(name, subject, body, to) {
+function _createMail(name, subject, body, to, status = 'inbox') {
     return {
         id: utilService.makeId(),
+        status: status,
         name: name,
         subject: subject,
         body: body,
@@ -30,10 +33,27 @@ function _createMail(name, subject, body, to) {
 }
 
 //returns a promise with all mails
-//TODO: filterBy = getDefaultFilter()
+
 //TODO: sortby
-function query() {
+function query(filterBy = getDefaultFilter()) {
+
     return asyncStorageService.query(MAIL_KEY)
+    .then(mails => {
+        if (filterBy.search) {
+            const regex = new RegExp(filterBy.search, 'i')
+            mails = mails.filter(mail => regex.test(mail.subject))
+        }
+        if (filterBy.status) {
+            mails = mails.filter(mail => mail.status === filterBy.status)
+        }
+        if (filterBy.sortBy) {
+            mails = mails.sort((mail1, mail2) => {
+                if (mail1[filterBy.sortBy] < mail2[filterBy.sortBy]) return -1
+                if (mail1[filterBy.sortBy] > mail2[filterBy.sortBy]) return 1
+            })
+        }
+        return mails
+    })
 }
 
 //creates mails if none exist
@@ -70,8 +90,24 @@ function deleteMail(mailId) {
 }
 
 function sendMail( subject, body, to) {
-    const mail = _createMail( loggedinUser.fullName, subject, body, to)
+    const mail = _createMail( loggedinUser.fullName, subject, body, to, 'sent')
     return asyncStorageService.post(MAIL_KEY, mail).catch(err => {
         console.log('Mail not SENT', err);
     })
+}
+//saved email after changes
+function saveMail(mail) {
+    return asyncStorageService.put(MAIL_KEY, mail).catch(err => {
+        console.log('Mail not SAVED', err);
+    })
+}
+
+function getDefaultFilter(){
+    return {
+        status: 'inbox',
+        search: '',
+        sortBy: 'sentAt',
+
+
+    }
 }
