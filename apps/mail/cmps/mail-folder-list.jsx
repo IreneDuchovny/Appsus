@@ -97,7 +97,7 @@ export function MailFolderList({ onSetFilter }) {
                 }}>Drafts</li></div>
 
             <div className="side-bar-unread flex space-between">
-                <img src="assets/img/open-envelope.png" alt="" />
+                <img src="assets/img/mail.png" alt="" />
                 <li className={selectedTab === 5 ? 'side-bar-item active' : 'side-bar-item'} onClick={() => {
                     setSelectedTab(5)
                     handleUnread()

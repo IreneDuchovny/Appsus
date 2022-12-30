@@ -1,6 +1,26 @@
-.mail-list{
-background-color: var(--mail-list-color);
-width: 75vw;
-
+.mail-list {
+    background-color: var(--mail-list-color);
+    width: 75vw;
 }
 
+.list-preview-header {
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--bottom-line);
+}
+
+.list-preview-header img {
+    width: 15px;
+    padding: 10px 10px;
+}
+
+.list-preview-header-title {
+    font-size: 1em;
+    font-weight: 800;
+}
+
+.list-preview-header-title:hover {
+    background: linear-gradient(to right, #fc3c71, #fa3ca2, #7e3bea, #3e49fe, #11c8f3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

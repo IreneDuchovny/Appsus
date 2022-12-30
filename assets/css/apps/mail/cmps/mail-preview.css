@@ -19,24 +19,61 @@
    padding:10px;
 }
 
-.main-mail-preview{
+/* .main-mail-preview{
    display: flex;
    flex-direction: row;
-   
-   justify-content: space-between;
-   align-items: center;
+
    padding: 10px;
    border-bottom: 1px solid var(--ptxt2);
    cursor: pointer;
   
+} */
+.star-btn,.trash-btn,.expant-btn{
+   border: none;
+   background-color: var(--white);
+   /* background-color: none; */
+}
+.main-mail-preview {
+   display: grid;
+   /* grid-template-columns: 0.2fr 1fr 1fr; */
+   grid-template-columns: 0.2fr 1fr 1fr 1fr 1fr;
+   grid-template-rows: 1fr;
+   grid-template-areas: "starred-checkbox name from-email email-subject date-email ";
+   padding: 10px;
+   align-items: center;
+   border-bottom: 1px solid var(--bottom-line);
+   cursor: pointer;
 }
 
+.main-mail-preview:hover{
+   background-color: var(--list-bg-color-hover);
+}
+
+.starred-checkbox {
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+}
+.main-mail-preview > :last-child {
+   grid-area: date-email;
+   justify-self: end;
+}
+/* .main-mail-preview > :first-child,
+.main-mail-preview > :nth-child(3) {
+   flex-grow: 1;
+}
+
+.main-mail-preview > :nth-child(2),
+.main-mail-preview > :nth-child(4) {
+   flex-grow: 2;
+} */
 /* .from-email, .email-subject, .date-email{
  width:25%;
 } */
 
-
-
+.list-sender-image{
+   flex-direction: column;
+}
 .expended-mail button{
    margin: 5px;
 }
@@ -50,4 +87,13 @@
 
 .unread{
    font-weight: bolder;
+}
+
+.main-pereview-expended{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   padding-right: 20px;
+   /* border-bottom: 1px solid var(--bottom-line); */
 }
