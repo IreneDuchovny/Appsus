@@ -11,6 +11,11 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
 
     useEffect(() => {
         if (noteToEdit) {
+            if(noteToEdit.type === 'note-todos'){
+                const txt = noteToEdit.info.todos.map(todo=> todo.txt).join(',')
+                //delete noteToEdit.info.todos
+                noteToEdit.info.txt=txt
+            }
             setNote(noteToEdit)
             onNoteTypeChange(noteToEdit.type)
             setIsExpended(true)
@@ -25,10 +30,16 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
     function saveNote(ev) {
         ev.preventDefault()
         if (note.type === 'note-video') checkVideoUrl()
+        if (note.type === 'note-todos'){
+            let todos = note.info.txt.split(',')
+            todos = todos.map(todo=>({txt: todo, isDone: false}))
+            delete note.info.txt
+            note.info.todos = todos
+        }
         onSaveNote(note)
         setIsExpended(false)
         setNote(noteService.getEmptyNote(noteType))
-        endEditing()
+        if(noteToEdit) endEditing()
     }
 
     function checkVideoUrl() {
@@ -49,9 +60,13 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
                 placeHolderRef.current = 'Enter video URL...'
                 fieldRef.current = 'url'
                 break;
+            case 'note-todos':
+                placeHolderRef.current = 'Enter a comma separated list...'
+                fieldRef.current = 'txt'
+                break;
         }
         setNoteType(newNoteType)
-        if(!noteToEdit) setNote(noteService.getEmptyNote(newNoteType))
+        if (!noteToEdit) setNote(noteService.getEmptyNote(newNoteType))
     }
 
     function onClose() {
@@ -84,6 +99,7 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
                         <button type="button" onClick={() => onNoteTypeChange('note-txt')}>T</button>
                         <button type="button" onClick={() => onNoteTypeChange('note-img')}>I</button>
                         <button type="button" onClick={() => onNoteTypeChange('note-video')}>V</button>
+                        <button type="button" onClick={() => onNoteTypeChange('note-todos')}>L</button>
                     </section>}
                 </label>
                 <button type='submit' hidden={true}></button>

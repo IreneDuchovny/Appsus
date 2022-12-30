@@ -47,8 +47,9 @@ export function NoteIndex() {
     }
 
     function onDuplicateNote(note){
-        delete note.id
-        onSaveNote(note)
+        const newNote = JSON.parse(JSON.stringify(note))
+        delete newNote.id
+        onSaveNote(newNote)
     }
 
     function onBgcolorChange(noteId,bgcolor){
