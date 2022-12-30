@@ -16,10 +16,9 @@ import { MailFolderList } from '../cmps/mail-folder-list.jsx'
 export function MailIndex() {
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [isLoading, setIsLoading] = useState(true)
+    const [unreadCount, setUnreadCount] = useState(0)
     const [mails, setMails] = useState([])
     
-
-
     useEffect(() => {
         loadMails()
     }, [filterBy])
@@ -30,6 +29,7 @@ export function MailIndex() {
             .then(mails => {
                 setIsLoading(false)
                 setMails(mails)
+                getUnreadCount()
 
                 // console.log('mails',mails )
             })
@@ -74,13 +74,23 @@ export function MailIndex() {
                 setFilterBy(filterBy)
             }
 
+
+    function getUnreadCount() {
+        mailService.unReadCount()
+            .then(unreadCount => {
+                setUnreadCount(unreadCount)
+                console.log('unreadCount', unreadCount)
+                return unreadCount
+            })
+            
+    }        
     return <div>
             {/* <MailHeader className="mail-header" /> */}
             <div className="main-layout flex ">
                 <div className="side-bar">
-                    <Link to="/mail/new/compose"> <button className="compose-btn">  Compose</button></Link>
+                    <Link to="/mail/new/compose"> <button className="compose-btn ">  Compose</button></Link>
                     {/* <button className="compose-btn"> <Route element={<MailCompose/>} path="/mail/compose"/> Compose</button> */}
-                    <MailFolderList onSetFilter={onSetFilter} />
+                    <MailFolderList onSetFilter={onSetFilter} unreadCount={unreadCount} />
 
                 </div>
                 <div className="mail-list">

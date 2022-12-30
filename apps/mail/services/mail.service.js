@@ -12,6 +12,7 @@ export const mailService = {
     sendMail,
     saveMail,
     getDefaultFilter,
+    unReadCount,
 }
 const MAIL_KEY = 'mailsDB'
 _createMails()
@@ -114,7 +115,12 @@ function getDefaultFilter(){
         status: 'inbox',
         search: '',
         sortBy: 'sentAt',
-
-
     }
+}
+
+function unReadCount(){
+    return asyncStorageService.query(MAIL_KEY).then(mails => {
+        mails = mails.filter(mail => mail.isRead === false)
+        return mails.length
+    })
 }

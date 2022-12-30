@@ -33,7 +33,8 @@
 @import './apps/note/cmps/note-list.css';
 @import './apps/note/cmps/note-btns.css';
 
-@import './apps/note/cmps/mail-compose.css';
+@import './apps/mail/cmps/mail-compose.css';
 
 @import './apps/note/cmps/note-edit.css';
-@import './apps/note/cmps/mail-folder-list.css';
+@import './apps/mail/cmps/mail-folder-list.css';
+@import './apps/mail/cmps/mail-layout.css';

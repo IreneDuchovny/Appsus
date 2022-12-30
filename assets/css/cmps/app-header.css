@@ -75,3 +75,11 @@ nav a.active {
     color: var(--ptxt2);
     background-color: var(--mail-list-color);
 }
+
+.main-nav-btns img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0 10px;
+    align-self: center;
+}

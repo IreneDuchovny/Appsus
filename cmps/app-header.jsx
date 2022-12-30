@@ -35,7 +35,10 @@ export function AppHeader() {
           <button className="go-about-btn"><NavLink to="/about">About</NavLink></button>
           <button className="go-home-btn"> <a onClick={() => goMail('mail')}>E-mail</a></button>
           <button className="go-note-btn"><a onClick={() =>goNote('note')}>Note</a></button>
+          <img src="assets/img/avatar.png"/>
           </div>
+          
         </nav>
+        
     </header>
 }
