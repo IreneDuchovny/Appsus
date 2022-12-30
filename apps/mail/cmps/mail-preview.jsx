@@ -3,7 +3,7 @@ const { Link } = ReactRouterDOM
 const { useEffect, useState, useRef,Fragment } = React
 import { Longtxt } from '/long-txt.jsx'
 
-export function MailPreview({ mail, onDeleteMail, onSaveMail }) {
+export function MailPreview({ mail, onDeleteMail, onSaveMail ,getUnreadCount}) {
     const [isStarred, setIsStarred] = useState(mail.isStarred)
 
     const [isRead, setIsRead] = useState(mail.isRead)
@@ -18,7 +18,9 @@ export function MailPreview({ mail, onDeleteMail, onSaveMail }) {
         setIsExpanded(!isExpanded)
         setIsRead(true)
         mail.isRead = true
-        onSaveMail(mail)
+        onSaveMail(mail).then(() => {
+            getUnreadCount()
+        })
     }
 
     function onStarMail() {
