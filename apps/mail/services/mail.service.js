@@ -17,7 +17,7 @@ const MAIL_KEY = 'mailsDB'
 _createMails()
 
 //creates a mail
-function _createMail(name, subject, body, to, status = 'inbox') {
+function _createMail(name, subject, body, to, status = 'inbox', isRead = false, isStarred = false) {
     return {
         id: utilService.makeId(),
         status: status,
@@ -26,7 +26,7 @@ function _createMail(name, subject, body, to, status = 'inbox') {
         body: body,
         from: loggedinUser.email,
         to: to,
-        isRead: false,
+        isRead: isRead,
         isStarred: false,
         sentAt: Date.now(),
     }
@@ -96,8 +96,8 @@ function deleteMail(mailId) {
     })
 }
 
-function sendMail( subject, body, to) {
-    const mail = _createMail( loggedinUser.fullName, subject, body, to, 'sent')
+function sendMail( subject, body, to, status) {
+    const mail = _createMail( loggedinUser.fullName, subject, body, to, status, true)
     return asyncStorageService.post(MAIL_KEY, mail).catch(err => {
         console.log('Mail not SENT', err);
     })

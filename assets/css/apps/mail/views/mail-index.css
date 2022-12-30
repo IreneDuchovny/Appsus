@@ -1,5 +1,13 @@
+.main-layout{
+    /* display: flex;
+    flex-direction: row; */
+  align-items: center;
+    width: 100vw;
+   
+}
+
 .side-bar{
-    width:20vw;
+    width:13vw;
     /* padding: 0px 12px 0px 16px; */
     /* border-right: 1 px solid black; */
 }

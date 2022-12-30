@@ -12,3 +12,8 @@ border: 2px solid var(--border-color);
 padding: 50px 100px 50px 100px;
    border-radius: 18px;
 }
+
+.main-page-container{
+    margin: 5% auto ;
+    width:80vw;
+}

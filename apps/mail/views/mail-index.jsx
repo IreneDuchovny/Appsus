@@ -1,12 +1,12 @@
 
 const { useEffect, useState, useRef } = React
 const Router = ReactRouterDOM.HashRouter
-const { Route, Routes, Link } = ReactRouterDOM
+const { Route, Routes, Link , useParams} = ReactRouterDOM
 
 import { mailService } from '../services/mail.service.js'
 import { loggedinUser } from '../../../services/login.service.js'
 import { MailList } from '../cmps/mail-list.jsx'
-import { MailHeader } from '../cmps/mail-header.jsx'
+// import { MailHeader } from '../cmps/mail-header.jsx'
 import { MailFolderList } from '../cmps/mail-folder-list.jsx'
 // import { MailFilter } from '../cmps/mail-filter.jsx'
 // import { MailCompose } from '../cmps/mail-compose.jsx'
@@ -17,6 +17,8 @@ export function MailIndex() {
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [isLoading, setIsLoading] = useState(true)
     const [mails, setMails] = useState([])
+    
+
 
     useEffect(() => {
         loadMails()
@@ -50,12 +52,17 @@ export function MailIndex() {
                     )
             }
         })}
+    
 
-    function onSendMail(subject, body, to) {
+
+    function onSendMail(subject, body, to, status) {
+                
                 setIsLoading(true)
-                mailService.sendMail(subject, body, to)
+                mailService.sendMail(subject, body, to, status)
                     .then(() => {
-                        loadMails()
+                       
+                            setFilterBy({"status" : "sent" })
+
                     })
             }
 
@@ -68,7 +75,7 @@ export function MailIndex() {
             }
 
     return <div>
-            <MailHeader className="mail-header" />
+            {/* <MailHeader className="mail-header" /> */}
             <div className="main-layout flex ">
                 <div className="side-bar">
                     <Link to="/mail/new/compose"> <button className="compose-btn">  Compose</button></Link>
