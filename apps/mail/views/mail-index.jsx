@@ -1,7 +1,7 @@
 
 const { useEffect, useState, useRef } = React
 const Router = ReactRouterDOM.HashRouter
-const { Route, Routes, Link } = ReactRouterDOM
+const { Route, Routes, Link , useParams} = ReactRouterDOM
 
 import { mailService } from '../services/mail.service.js'
 import { loggedinUser } from '../../../services/login.service.js'
@@ -17,6 +17,8 @@ export function MailIndex() {
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [isLoading, setIsLoading] = useState(true)
     const [mails, setMails] = useState([])
+    
+
 
     useEffect(() => {
         loadMails()
@@ -50,12 +52,17 @@ export function MailIndex() {
                     )
             }
         })}
+    
 
-    function onSendMail(subject, body, to) {
+
+    function onSendMail(subject, body, to, status) {
+                
                 setIsLoading(true)
-                mailService.sendMail(subject, body, to)
+                mailService.sendMail(subject, body, to, status)
                     .then(() => {
-                        loadMails()
+                       
+                            setFilterBy({"status" : "sent" })
+
                     })
             }
 

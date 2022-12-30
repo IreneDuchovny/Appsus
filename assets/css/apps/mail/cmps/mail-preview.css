@@ -22,7 +22,7 @@
 .main-mail-preview{
    display: flex;
    flex-direction: row;
-   /* justify-content: start; */
+   
    justify-content: space-between;
    align-items: center;
    padding: 10px;
@@ -31,9 +31,11 @@
   
 }
 
-.from-email, .subject-email, .date-email{
+/* .from-email, .email-subject, .date-email{
  width:25%;
-}
+} */
+
+
 
 .expended-mail button{
    margin: 5px;
