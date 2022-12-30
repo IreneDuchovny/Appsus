@@ -7,13 +7,18 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 20px 0;
+    align-items: center;
+    padding-left: 3rem;
+    padding-right: 4.2rem;
+    /* margin-left: 20px;
+    margin-right: 20px; */
 }
 
 nav a {
     margin: .5em;
 }
 
-nav a:active {
+/* nav a:active {
     color: purple;
 }
 
@@ -21,4 +26,52 @@ nav a.active {
     color: darkblue;
     font-weight: bold;
     text-decoration: overline;
+} */
+
+
+.go-home-btn,
+.go-about-btn,
+.go-mail-btn,
+.go-note-btn {
+    background-color: var(--header-btn-color);
+    border-color: rgb(142, 142, 142);
+    /* box-shadow: #094c66 4px 4px 0px; */
+    border-radius: 6px;
+    padding: 10px 4px 10px 4px;
+    width: 65px;
+    height: 40px;
+    color: rgb(99, 98, 98);
+    font-size: 1em;
+    /* font-weight: bold; */
+    border: none;
+    transition: transform 200ms, box-shadow 200ms;
+    margin: 6px;
+}
+
+.go-home-btn:active,
+.go-about-btn:active,
+.go-mail-btn:active,
+.go-note-btn:active {
+    transform: translateY(4px) translateX(4px);
+    /* box-shadow: #094c66 0px 0px 0px; */
+}
+
+
+.search-bar-header {
+    display: flex;
+    /* justify-content: space-between; */
+    /* padding: 20px 0; */
+
+}
+
+.searchbar-input {
+    width: 400px;
+    height: 30px;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    /* border-radius: 5px; */
+    padding: 0 10px;
+    font-size: 1em;
+    color: var(--ptxt2);
+    background-color: var(--mail-list-color);
 }
