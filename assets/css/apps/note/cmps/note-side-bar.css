@@ -1,5 +1,5 @@
 .note-side-bar{
-    width:13vw;
+    width:10vw;
     /* padding: 0px 12px 0px 16px; */
     /* border-right: 1 px solid black; */
     position: sticky;
@@ -8,7 +8,7 @@
 
 .note-side-bar a{
     display: flex;
-    width: 15vw;
+    width: 10vw;
     height: 4vh;
     margin: 0;
     align-items: center;

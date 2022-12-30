@@ -93,9 +93,9 @@ export function NoteIndex() {
         {isLoading && <h2>loading..</h2>}
 
         
-        <div className="flex space-between">
+        <div className="note-index-container flex">
             <NoteSideBar />
-            <div>
+            <div className="note-list-container">
             {!isLoading && <NoteEdit onSaveNote={onSaveNote} />}
                 <h2>Pinned</h2>
                 {!isLoading && <NoteList notes={notes.filter(note => note.isPinned)} onPinNoteChange={onPinNoteChange} onBgcolorChange={onBgcolorChange} onDuplicateNote={onDuplicateNote} onRemoveNote={onRemoveNote} onSaveNote={onSaveNote} />}

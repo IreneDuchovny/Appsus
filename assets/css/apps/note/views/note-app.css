@@ -6,3 +6,11 @@
 .note-index h2{
     font-size: 1.7em;
 }
+
+.note-index-container{
+    gap: 50px;
+}
+
+.note-list-container{
+    flex-grow: 1;
+}
