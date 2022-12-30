@@ -25,6 +25,7 @@ export function App() {
                 </Route>
                 
                 <Route path="/note" element={<NoteIndex />} />
+                <Route path="/note/:noteType" element={<NoteIndex />} />
                 
             </Routes>
         </section>

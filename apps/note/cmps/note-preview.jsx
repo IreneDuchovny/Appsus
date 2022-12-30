@@ -13,7 +13,6 @@ export function NotePreview({ note }) {
 }
 
 function DynamicCmp(props) {
-    console.log(props.cmpType)
     switch (props.cmpType) {
         case 'note-txt':
             return <NoteTxt {...props} />
@@ -32,7 +31,7 @@ function NoteTxt({ content }) {
 }
 
 function NoteImg({ content }) {
-    return <img src={content} alt="" width='200px' />
+    return <img src={content} alt="" width='200px'/>
 }
 
 function NoteVideo({ content }) {

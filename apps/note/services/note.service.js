@@ -16,8 +16,14 @@ export const noteService = {
     getNotesForDisplay
 }
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
     return asyncStorageService.query(NOTE_KEY)
+    .then(notes=>{
+        if(filterBy.type){
+            notes = notes.filter(note=> note.type === filterBy.type)
+        }
+        return notes
+    })
 }
 
 function getNotesForDisplay() {
@@ -60,7 +66,7 @@ function updateBgcolor(noteId, bgcolor) {
 }
 
 function getDefaultFilter() {
-    return { txt: '', type: '' }
+    return { type: '', txt: '' }
 }
 
 function _createNotes() {
