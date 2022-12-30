@@ -6,7 +6,7 @@ const { useEffect, useState, useRef,Fragment } = React
 const { Outlet, useParams } = ReactRouterDOM
 const { Link } = ReactRouterDOM
 
-export function MailList({ mails, onDeleteMail, onSendMail, onSaveMail }) {
+export function MailList({ mails, onDeleteMail, onSendMail, onSaveMail, getUnreadCount }) {
     const { mailId, compose } = useParams()
 
 //    console.log(useParams());
@@ -18,7 +18,7 @@ export function MailList({ mails, onDeleteMail, onSendMail, onSaveMail }) {
     <div>
         {!(mailId || compose)  && <ul className="mail-list clean-list">
             {mails.map(mail => <li key={mail.id} className="mail-preview">
-                <MailPreview mail={mail} onSaveMail={onSaveMail} onDeleteMail={onDeleteMail} />
+                <MailPreview mail={mail}  getUnreadCount={getUnreadCount} onSaveMail={onSaveMail} onDeleteMail={onDeleteMail} />
 
             </li>)}
         </ul>

@@ -78,7 +78,7 @@ export function MailIndex() {
             }
 
     function onSaveMail(mail) {
-                mailService.saveMail(mail)
+               return mailService.saveMail(mail)
             }
 
     function onSetFilter(filterBy) {
@@ -102,11 +102,12 @@ export function MailIndex() {
                     <Link to="/mail/new/compose"> <button className="compose-btn ">  Compose</button></Link>
                     {/* <button className="compose-btn"> <Route element={<MailCompose/>} path="/mail/compose"/> Compose</button> */}
                     <MailFolderList onSetFilter={onSetFilter} unreadCount={unreadCount} />
+                    
 
                 </div>
                 <div className="mail-list">
                     {/* todo:add tabs+paging in here */}
-                    {isLoading ? <div>Loading...</div> : <MailList mails={mails} onSaveMail={onSaveMail} onDeleteMail={onDeleteMail} onSendMail={onSendMail} />}
+                    {isLoading ? <div>Loading...</div> : <MailList  getUnreadCount={getUnreadCount} mails={mails} onSaveMail={onSaveMail} onDeleteMail={onDeleteMail} onSendMail={onSendMail} />}
                 </div>
 
             </div>
