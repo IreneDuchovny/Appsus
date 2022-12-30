@@ -8,6 +8,7 @@ import { loggedinUser } from '../../../services/login.service.js'
 import { MailList } from '../cmps/mail-list.jsx'
 // import { MailHeader } from '../cmps/mail-header.jsx'
 import { MailFolderList } from '../cmps/mail-folder-list.jsx'
+import { eventBusService } from '../../../services/event-bus.service.js'
 // import { MailFilter } from '../cmps/mail-filter.jsx'
 // import { MailCompose } from '../cmps/mail-compose.jsx'
 
@@ -22,6 +23,16 @@ export function MailIndex() {
     useEffect(() => {
         loadMails()
     }, [filterBy])
+
+    useEffect(() => {
+        const unsubscribe = eventBusService.on('search', (search) => {
+            setFilterBy((prevFilterBy) => {return {...prevFilterBy, search: search }});
+           
+        })
+
+        return unsubscribe
+
+    }, [])
 
     function loadMails() {
         setIsLoading(true)
