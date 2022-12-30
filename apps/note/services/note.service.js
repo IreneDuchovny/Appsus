@@ -18,19 +18,31 @@ export const noteService = {
 
 function query(filterBy = getDefaultFilter()) {
     return asyncStorageService.query(NOTE_KEY)
-    .then(notes=>{
-        if(filterBy.type){
-            notes = notes.filter(note=> note.type === filterBy.type)
-        }
-        return notes
-    })
+        .then(notes => {
+            if (filterBy.type) {
+                notes = notes.filter(note => note.type === filterBy.type)
+            }
+            if (filterBy.search) {
+                console.log(filterBy.search)
+                const regex = new RegExp(filterBy.search, 'i')
+                notes = notes.filter(note => {
+                    const isInTitle = regex.test(note.info.title)
+                    const isIntxt = note.info.txt ? regex.test(note.info.txt) : false
+                    const isInTodos = note.info.todos ? regex.test(note.info.todos.map(todo => todo.txt).join(',')) : false
+                    return (
+                        isInTitle || isIntxt || isInTodos
+                    )
+                })
+            }
+            return notes
+        })
 }
 
 function getNotesForDisplay() {
     return query()
         .then(notes => {
-            const pinnedNotes = notes.filter(note=> note.isPinned)
-            const unPinnedNotes = notes.filter(note=> !note.isPinned)
+            const pinnedNotes = notes.filter(note => note.isPinned)
+            const unPinnedNotes = notes.filter(note => !note.isPinned)
             return pinnedNotes.concat(unPinnedNotes)
 
         })
@@ -66,7 +78,7 @@ function updateBgcolor(noteId, bgcolor) {
 }
 
 function getDefaultFilter() {
-    return { type: '', txt: '' }
+    return { type: '', search: '' }
 }
 
 function _createNotes() {

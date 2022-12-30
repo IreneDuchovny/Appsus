@@ -2,6 +2,7 @@ const { useState, useEffect, useRef } = React
 const { Link, useParams } = ReactRouterDOM
 
 import { noteService } from "../services/note.service.js"
+import { eventBusService } from "../../../services/event-bus.service.js"
 
 import { NoteList } from "../cmps/note-list.jsx"
 import { NoteEdit } from "../cmps/note-edit.jsx"
@@ -11,18 +12,28 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState([])
     const [isLoading, setIsLoading] = useState(null)
-    let filterNotesBy = noteService.getDefaultFilter()
+    let [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
     let { noteType } = useParams()
 
     useEffect(() => {
         noteType = noteType ? noteType : ''
-        if (noteType) filterNotesBy = { ...filterNotesBy, type: noteType }
+        if (noteType) filterBy = { ...filterBy, type: noteType }
         loadNotes()
     }, [noteType])
 
+    useEffect(() => {
+        const unsubscribe = eventBusService.on('search', (search) => {
+            filterBy = { ...filterBy, search: search }
+            loadNotes()
+        })
+
+        return unsubscribe
+
+    }, [])
+
     function loadNotes() {
         setIsLoading(true)
-        noteService.query(filterNotesBy)
+        noteService.query(filterBy)
             .then(notesToUpdate => {
                 setNotes(notesToUpdate)
                 setIsLoading(false)

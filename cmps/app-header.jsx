@@ -1,3 +1,5 @@
+import { SearchBar } from "./search-bar.jsx"
+
 const { Link, NavLink , useNavigate} = ReactRouterDOM
 const { useState } = React
 export function AppHeader() {
@@ -27,8 +29,8 @@ export function AppHeader() {
             {/* <h3>Apsus!</h3> */}
         </Link>
        <div className="search-bar-header">
-        <input className="searchbar-input" type="text" placeholder="Search" />
-       </div>
+        <SearchBar /> 
+        </div>
         <nav>
           <div className="main-nav-btns flex ">
           <button className="go-home-btn">  <NavLink to="/">Home</NavLink></button>
