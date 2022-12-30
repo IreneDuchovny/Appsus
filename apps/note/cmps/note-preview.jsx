@@ -27,7 +27,7 @@ function DynamicCmp(props) {
 
 
 function NoteTxt({ content }) {
-    return <h3>{content}</h3>
+    return <h3 className="note-txt">{content}</h3>
 }
 
 function NoteImg({ content }) {

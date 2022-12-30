@@ -1,0 +1,25 @@
+.note-side-bar{
+    width:13vw;
+    /* padding: 0px 12px 0px 16px; */
+    /* border-right: 1 px solid black; */
+    position: sticky;
+    padding-top: 5em;
+}
+
+.note-side-bar a{
+    display: flex;
+    width: 15vw;
+    height: 4vh;
+    margin: 0;
+    align-items: center;
+    line-height: 2vh;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.5em;
+    border-radius: 1em;
+    padding-left: 1em;
+}
+
+.note-side-bar a:hover{
+    background-color: var(--mail-list-color);
+}

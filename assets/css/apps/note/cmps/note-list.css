@@ -1,19 +1,33 @@
 .note-list{
-    grid-template-columns: repeat(auto-fit, 420px);
-    grid-auto-flow: dense;
-    gap: 10px;
+    columns: 4;
+    column-width: 200px ;
+    max-width: 1000px;
     padding: 60px;
-    width: auto;
     margin: 0 auto;
+    align-items: center;
+    justify-content: center;
 
 }
 
+iframe{
+    max-width: 100%;
+}
+
 .note-list>li{
+    align-self: center;
+    justify-self: center;
     border: 1px solid gray;
     min-height: 200px;
     text-align: center;
     padding: 1em;
     position: relative;
+    margin-bottom: 20px;
+    break-inside: avoid-column;
+    width: fit-content;
+    min-width: 200px;
+    border-radius: 1em;
+    padding-bottom: 3em;
+
     
 }
 
@@ -27,9 +41,9 @@
 
 .edit-modal{
     position: fixed;
-    border: 1px solid darkgray;
-    width: 50vh;
-    padding: 1em;
+    border: none;
+    width: fit-content;
+    height: fit-content;
     translate: -50%;
     left: 50%;
     transform: translateY(50%);

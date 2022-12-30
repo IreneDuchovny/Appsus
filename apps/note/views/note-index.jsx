@@ -83,11 +83,7 @@ export function NoteIndex() {
                     .then(note => {
                         const idx = notes.findIndex(note => note.id === noteId)
                         notes.splice(idx, 1)
-                        if (note.isPinned) {
-                            notes.unshift(note)
-                        } else {
-                            notes.push(note)
-                        }
+                        notes.unshift(note)
                         setNotes(JSON.parse(JSON.stringify(notes)))
                     })
             })
@@ -95,9 +91,18 @@ export function NoteIndex() {
 
     return <section className="note-index">
         {isLoading && <h2>loading..</h2>}
-        <NoteSideBar />
-        {!isLoading && <NoteEdit onSaveNote={onSaveNote} />}
-        {!isLoading && <NoteList notes={notes} onPinNoteChange={onPinNoteChange} onBgcolorChange={onBgcolorChange} onDuplicateNote={onDuplicateNote} onRemoveNote={onRemoveNote} onSaveNote={onSaveNote} />}
+
+        
+        <div className="flex space-between">
+            <NoteSideBar />
+            <div>
+            {!isLoading && <NoteEdit onSaveNote={onSaveNote} />}
+                <h2>Pinned</h2>
+                {!isLoading && <NoteList notes={notes.filter(note => note.isPinned)} onPinNoteChange={onPinNoteChange} onBgcolorChange={onBgcolorChange} onDuplicateNote={onDuplicateNote} onRemoveNote={onRemoveNote} onSaveNote={onSaveNote} />}
+                <h2>Other</h2>
+                {!isLoading && <NoteList notes={notes.filter(note => !note.isPinned)} onPinNoteChange={onPinNoteChange} onBgcolorChange={onBgcolorChange} onDuplicateNote={onDuplicateNote} onRemoveNote={onRemoveNote} onSaveNote={onSaveNote} />}
+            </div>
+        </div>
     </section>
 
 }

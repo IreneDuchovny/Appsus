@@ -4,3 +4,21 @@
     right: 1em;
     gap: 0.5em;
 }
+
+.note-btns input{
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+.note-btns button,label{
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 2em;
+    opacity: 0.8;
+}
+
+.note-btns button:hover,label:hover{
+   opacity: 1;
+}

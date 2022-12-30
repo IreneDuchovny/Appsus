@@ -95,14 +95,14 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
                         placeholder={placeHolderRef.current}
                         value={note.info[fieldRef.current]}
                         onChange={handleChange} />
-                    {!noteToEdit && <section className="note-edit-btns flex space-between">
-                        <button type="button" onClick={() => onNoteTypeChange('note-txt')}>T</button>
-                        <button type="button" onClick={() => onNoteTypeChange('note-img')}>I</button>
-                        <button type="button" onClick={() => onNoteTypeChange('note-video')}>V</button>
-                        <button type="button" onClick={() => onNoteTypeChange('note-todos')}>L</button>
+                    {!noteToEdit && <section className="note-edit-btns flex">
+                        <button type="button" onClick={() => onNoteTypeChange('note-txt')}><i className="fa-solid fa-pen-fancy"></i></button>
+                        <button type="button" onClick={() => onNoteTypeChange('note-img')}><i className="fa-regular fa-image"></i></button>
+                        <button type="button" onClick={() => onNoteTypeChange('note-video')}><i className="fa-brands fa-youtube"></i></button>
+                        <button type="button" onClick={() => onNoteTypeChange('note-todos')}><i className="fa-solid fa-list-check"></i></button>
                     </section>}
+                    <button type='submit' hidden={true}></button>
                 </label>
-                <button type='submit' hidden={true}></button>
                 {isExpended && <button className='btn-close' type="button" onClick={onClose}>Close</button>}
 
             </form>
