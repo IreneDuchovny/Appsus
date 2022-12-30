@@ -8,7 +8,7 @@
 
 }
 
-.note-list li{
+.note-list>li{
     border: 1px solid gray;
     min-height: 200px;
     text-align: center;
@@ -17,21 +17,23 @@
     
 }
 
-.note-list li .note-btns{
+.note-list>li .note-btns{
     display: none;
 }
 
-.note-list li:hover .note-btns{
+.note-list>li:hover .note-btns{
     display: flex;
 }
 
 .edit-modal{
-    position: absolute;
+    position: fixed;
     border: 1px solid darkgray;
     width: 50vh;
     padding: 1em;
     translate: -50%;
     left: 50%;
+    transform: translateY(50%);
+    bottom: 50%;
     background-color: white;
     z-index: 999;
 }

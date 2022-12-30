@@ -1,23 +1,39 @@
 const { useState, useEffect, useRef } = React
-const { Link } = ReactRouterDOM
+const { Link, useParams } = ReactRouterDOM
 
 import { noteService } from "../services/note.service.js"
+import { eventBusService } from "../../../services/event-bus.service.js"
 
 import { NoteList } from "../cmps/note-list.jsx"
 import { NoteEdit } from "../cmps/note-edit.jsx"
+import { NoteSideBar } from "../cmps/note-side-bar.jsx"
 
 export function NoteIndex() {
 
     const [notes, setNotes] = useState([])
-    const [isLoading,setIsLoading] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    let [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
+    let { noteType } = useParams()
 
     useEffect(() => {
+        noteType = noteType ? noteType : ''
+        if (noteType) filterBy = { ...filterBy, type: noteType }
         loadNotes()
+    }, [noteType])
+
+    useEffect(() => {
+        const unsubscribe = eventBusService.on('search', (search) => {
+            filterBy = { ...filterBy, search: search }
+            loadNotes()
+        })
+
+        return unsubscribe
+
     }, [])
 
     function loadNotes() {
         setIsLoading(true)
-        noteService.getNotesForDisplay()
+        noteService.query(filterBy)
             .then(notesToUpdate => {
                 setNotes(notesToUpdate)
                 setIsLoading(false)
@@ -33,51 +49,53 @@ export function NoteIndex() {
     }
 
     function onSaveNote(note) {
-        const isUpdate = note.id? true: false
+        const isUpdate = note.id ? true : false
         noteService.saveNote(note)
-            .then(note=>{
-                if(isUpdate){
-                    const idx =notes.findIndex(currNote => currNote.id === note.id )
+            .then(note => {
+                if (isUpdate) {
+                    const idx = notes.findIndex(currNote => currNote.id === note.id)
                     notes[idx] = note
-                } else{
+                } else {
                     notes.unshift(note)
                 }
                 setNotes(JSON.parse(JSON.stringify(notes)))
             })
     }
 
-    function onDuplicateNote(note){
-        delete note.id
-        onSaveNote(note)
+    function onDuplicateNote(note) {
+        const newNote = JSON.parse(JSON.stringify(note))
+        delete newNote.id
+        onSaveNote(newNote)
     }
 
-    function onBgcolorChange(noteId,bgcolor){
-        noteService.updateBgcolor(noteId,bgcolor)
-        .then(note=>{
-            onSaveNote(note)
-        })
+    function onBgcolorChange(noteId, bgcolor) {
+        noteService.updateBgcolor(noteId, bgcolor)
+            .then(note => {
+                onSaveNote(note)
+            })
     }
 
-    function onPinNoteChange(noteId){
+    function onPinNoteChange(noteId) {
         noteService.getNote(noteId)
-        .then(note=>{
-            note.isPinned = !note.isPinned
-            noteService.saveNote(note)
-            .then(note=>{
-                const idx = notes.findIndex(note=> note.id === noteId)
-                notes.splice(idx,1)
-                if(note.isPinned){
-                    notes.unshift(note)
-                } else{
-                    notes.push(note)
-                }
-                setNotes(JSON.parse(JSON.stringify(notes)))
+            .then(note => {
+                note.isPinned = !note.isPinned
+                noteService.saveNote(note)
+                    .then(note => {
+                        const idx = notes.findIndex(note => note.id === noteId)
+                        notes.splice(idx, 1)
+                        if (note.isPinned) {
+                            notes.unshift(note)
+                        } else {
+                            notes.push(note)
+                        }
+                        setNotes(JSON.parse(JSON.stringify(notes)))
+                    })
             })
-        })
     }
 
     return <section className="note-index">
         {isLoading && <h2>loading..</h2>}
+        <NoteSideBar />
         {!isLoading && <NoteEdit onSaveNote={onSaveNote} />}
         {!isLoading && <NoteList notes={notes} onPinNoteChange={onPinNoteChange} onBgcolorChange={onBgcolorChange} onDuplicateNote={onDuplicateNote} onRemoveNote={onRemoveNote} onSaveNote={onSaveNote} />}
     </section>
