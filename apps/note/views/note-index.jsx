@@ -27,6 +27,8 @@ export function NoteIndex() {
             loadNotes()
         })
 
+
+
         return unsubscribe
 
     }, [])
@@ -92,15 +94,17 @@ export function NoteIndex() {
     return <section className="note-index">
         {isLoading && <h2>loading..</h2>}
 
-        
+
         <div className="note-index-container flex">
             <NoteSideBar />
             <div className="note-list-container">
-            {!isLoading && <NoteEdit onSaveNote={onSaveNote} />}
-                <h2>Pinned</h2>
-                {!isLoading && <NoteList notes={notes.filter(note => note.isPinned)} onPinNoteChange={onPinNoteChange} onBgcolorChange={onBgcolorChange} onDuplicateNote={onDuplicateNote} onRemoveNote={onRemoveNote} onSaveNote={onSaveNote} />}
-                <h2>Other</h2>
-                {!isLoading && <NoteList notes={notes.filter(note => !note.isPinned)} onPinNoteChange={onPinNoteChange} onBgcolorChange={onBgcolorChange} onDuplicateNote={onDuplicateNote} onRemoveNote={onRemoveNote} onSaveNote={onSaveNote} />}
+                {!isLoading && <NoteEdit onSaveNote={onSaveNote} />}
+                <div className="note-lists-container">
+                    <h2 className="list-name">Pinned</h2>
+                    {!isLoading && <NoteList notes={notes.filter(note => note.isPinned)} onPinNoteChange={onPinNoteChange} onBgcolorChange={onBgcolorChange} onDuplicateNote={onDuplicateNote} onRemoveNote={onRemoveNote} onSaveNote={onSaveNote} />}
+                    <h2>Other</h2>
+                    {!isLoading && <NoteList notes={notes.filter(note => !note.isPinned)} onPinNoteChange={onPinNoteChange} onBgcolorChange={onBgcolorChange} onDuplicateNote={onDuplicateNote} onRemoveNote={onRemoveNote} onSaveNote={onSaveNote} />}
+                </div>
             </div>
         </div>
     </section>

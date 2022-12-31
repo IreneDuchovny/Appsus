@@ -51,3 +51,14 @@ iframe{
     background-color: white;
     z-index: 999;
 }
+
+@media (max-Width: 700px) {
+    .note-list{
+        columns: 1;
+        column-width: 350px ;
+    }
+
+    .note-list>li{
+        min-width: 300px;
+    }
+}

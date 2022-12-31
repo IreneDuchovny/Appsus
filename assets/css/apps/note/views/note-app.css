@@ -1,16 +1,26 @@
-.note-index{
+.note-index {
     max-width: 90vw;
     margin: 0 auto;
 }
 
-.note-index h2{
+.note-index h2 {
     font-size: 1.7em;
 }
 
-.note-index-container{
+.list-name{
+    padding-left: 2em;
+}
+
+.note-index-container {
     gap: 50px;
 }
 
-.note-list-container{
+.note-list-container {
     flex-grow: 1;
+}
+
+@media (max-Width: 700px) {
+    .note-lists-container {
+        margin-top: 20%
+    }
 }

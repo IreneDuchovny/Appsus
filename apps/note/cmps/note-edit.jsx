@@ -94,7 +94,7 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
         <section className="note-edit flex justify-center align-center">
             <form onSubmit={saveNote}>
 
-                {isExpended && <input type="text"
+                {isExpended && <input style={{fontSize:'1.5em'}} type="text"
                     name='title'
                     placeholder='Enter Title'
                     value={note.info.title}
