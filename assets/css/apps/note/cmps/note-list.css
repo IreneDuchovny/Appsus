@@ -6,7 +6,6 @@
     margin: 0 auto;
     align-items: center;
     justify-content: center;
-
 }
 
 iframe{
@@ -27,8 +26,6 @@ iframe{
     min-width: 200px;
     border-radius: 1em;
     padding-bottom: 3em;
-
-    
 }
 
 .note-list>li .note-btns{
