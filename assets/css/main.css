@@ -41,3 +41,12 @@
 @import './apps/note/cmps/note-edit.css';
 @import './apps/mail/cmps/mail-folder-list.css';
 @import './apps/mail/cmps/mail-layout.css';
+
+@import './apps/book/cmps/add-review.css';
+@import './apps/book/cmps/book-details.css';
+@import './apps/book/cmps/book-edit.css';
+@import './apps/book/cmps/book-filter.css';
+@import './apps/book/cmps/book-list.css';
+@import './apps/book/cmps/book-preview.css';
+@import './apps/book/cmps/rating.css';
+@import './apps/book/cmps/user-msg.css';

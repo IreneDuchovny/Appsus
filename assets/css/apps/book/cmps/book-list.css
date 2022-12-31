@@ -1,0 +1,38 @@
+.book-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.book-index{
+    margin: 0 auto;
+}
+
+.book-btns{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+.book-btns .btn-remove,.btn-select{
+    font-size: 1em;
+    border-radius: 1em;
+    border: none;
+    background-color: rgb(147, 220, 249);
+    padding: 1em;
+    cursor: pointer;
+}
+
+.book-list li{
+    border: 1px solid darkgrey;
+    border-radius: 1em;
+    text-align: center;
+    padding: 1em;
+    background-color: #ee9977;
+    color: black
+}
