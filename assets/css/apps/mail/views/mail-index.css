@@ -29,16 +29,13 @@
 }
 
 .compose-btn{
-    border: none;
+    /* border: none; */
     border-radius: 30px;
     padding: 10px 40px 10px 40px ;
-    font-weight: 600;
-    font-size: 16px;
+    
     border: 1px solid var(--border-color2);
     /* background: linear-gradient(to right, #FF00FF, #0000FF, #660099); */
-    background: linear-gradient(to right, #fc3c71, #fa3ca2, #7e3bea, #3e49fe,#11c8f3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+   
     cursor: pointer; 
 }
 

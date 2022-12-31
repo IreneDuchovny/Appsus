@@ -8,9 +8,13 @@
 
 
 .mail-container, .notes-container, .books-container {
+    display: flex;
+    flex-direction: column;
 border: 2px solid var(--border-color);
 padding: 50px 100px 50px 100px;
+/* padding: 5vh 10vw 5vh 10vw; */
    border-radius: 18px;
+   align-items: center;
 }
 
 .main-page-container{
