@@ -15,12 +15,10 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
         const queryString = window.location.href.split('?')[1]
         const queryStringParams = new URLSearchParams(queryString)
         if (queryStringParams.get('title') && queryStringParams.get('txt')) {
-            const noteFromMail={id:'',style:{},isPinned:false,info:{title:'',txt:''}}
+            const noteFromMail = { id: '', type: 'note-txt', style: {}, isPinned: false, info: { title: '', txt: '' } }
             noteFromMail.info.title = queryStringParams.get('title')
             noteFromMail.info.txt = queryStringParams.get('txt')
-            noteFromMail.style = {}
-            noteFromMail.id = utilService.makeId()
-            noteToEdit = noteFromMail 
+            noteToEdit = noteFromMail
         }
 
         if (noteToEdit) {
@@ -94,7 +92,7 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
         <section className="note-edit flex justify-center align-center">
             <form onSubmit={saveNote}>
 
-                {isExpended && <input style={{fontSize:'1.5em'}} type="text"
+                {isExpended && <input style={{ fontSize: '1.5em' }} type="text"
                     name='title'
                     placeholder='Enter Title'
                     value={note.info.title}
