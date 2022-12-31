@@ -17,8 +17,6 @@ h5,
 h6 {
     margin: 0;
     font-family: 'roboto', sans-serif;
-    /* font-family: Montserrat, sans-serif;
-    font-family: lato, sans-serif; */
     font-size: 0.875rem;
 }
 
@@ -27,12 +25,6 @@ a {
     color: inherit;
     cursor: pointer;
 }
-
-/* img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-} */
 
 .main-screen {
     position: fixed;
