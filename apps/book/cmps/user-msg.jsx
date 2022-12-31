@@ -12,18 +12,15 @@ export function UserMsg(){
                 clearTimeout(timeoutIdRef.current)
                 timeoutIdRef.current = null
             }
-
             timeoutIdRef.current = setTimeout(onCloseMsg, 3000)
         })
 
         return unsubscribe
-
     }, [])
 
     function onCloseMsg() {
         setMsg(null)
     }
-
 
     if (!msg) return <span></span>
     return <div className={"user-msg " + msg.type}>

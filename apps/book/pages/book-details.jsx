@@ -8,7 +8,6 @@ import { LongTxt } from "../cmps/long-txt.jsx"
 import { AddReview } from '../cmps/add-review.jsx'
 
 export function BookDetails() {
-
     const [book, setBook] = useState(null)
     const params = useParams()
     const navigate = useNavigate()
@@ -52,7 +51,6 @@ export function BookDetails() {
             setBook(book)
             showSuccessMsg('Review added')
         })
-
     }
 
     function onRemoveReview(reviewId) {
@@ -98,6 +96,5 @@ export function BookDetails() {
                 <button className="btn-go-back" onClick={onGoBack}>Go Back</button>
             </div>
         </div>
-
     </section>
 }

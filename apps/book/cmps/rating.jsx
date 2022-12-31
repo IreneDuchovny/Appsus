@@ -1,10 +1,8 @@
 
 export function Rating({updateRating}) {
-
     function handleChange({target}){
         updateRating(target.value)
     }
-
 
     return <fieldset className="rating">
     <input type="radio" onChange={handleChange} id="star5" name="rating" value="5" /><label className = "full" htmlFor="star5" title="Awesome - 5 stars"></label>

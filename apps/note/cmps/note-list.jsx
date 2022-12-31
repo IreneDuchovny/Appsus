@@ -1,10 +1,8 @@
 const { useState, useEffect, useRef } = React
 
-
 import { NotePreview } from "./note-preview.jsx"
 import { NoteBtns } from "./note-btns.jsx"
 import { NoteEdit } from "./note-edit.jsx"
-
 
 export function NoteList({ notes, onRemoveNote, onSaveNote, onDuplicateNote, onBgcolorChange, onPinNoteChange }) {
     const [noteToEdit, setNoteToEdit] = useState(null)
@@ -16,7 +14,6 @@ export function NoteList({ notes, onRemoveNote, onSaveNote, onDuplicateNote, onB
     function onEndEditing() {
         setNoteToEdit(null)
     }
-
 
     return (
         <section>
@@ -31,6 +28,5 @@ export function NoteList({ notes, onRemoveNote, onSaveNote, onDuplicateNote, onB
                 ))}
             </ul>
         </section>
-    
     )
 }

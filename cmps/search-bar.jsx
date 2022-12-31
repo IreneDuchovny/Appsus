@@ -3,7 +3,6 @@ const { useState} = React
 import { eventBusService } from "../services/event-bus.service.js"
 
 export function SearchBar(){
-
     const [filterByTxt, setFilterByTxt] = useState('')
 
     function handleChange({target}){

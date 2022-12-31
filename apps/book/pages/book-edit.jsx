@@ -30,8 +30,7 @@ export function BookEdit() {
         value = field === 'authors' || field === 'categories' ? value.split(',') : value
         value = type === 'checkbox'? target.checked : value
 
-        if (field === 'amount' || field === 'currencyCode' || field === 'isOnSale') {
-            
+        if (field === 'amount' || field === 'currencyCode' || field === 'isOnSale') {  
             setBookToEdit(prevBook => ({ ...prevBook, listPrice: { ...prevBook.listPrice, [field]: value } }))
         } else {
             setBookToEdit(prevBook => ({ ...prevBook, [field]: value }))
@@ -135,7 +134,6 @@ export function BookEdit() {
                 name='isOnSale'
                 checked={bookToEdit.listPrice.isOnSale}
                 onChange={handleChange} />
-
             <button>Add book</button>
         </form>
     </section>

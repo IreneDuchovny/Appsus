@@ -44,7 +44,6 @@ function getNotesForDisplay() {
             const pinnedNotes = notes.filter(note => note.isPinned)
             const unPinnedNotes = notes.filter(note => !note.isPinned)
             return pinnedNotes.concat(unPinnedNotes)
-
         })
 }
 
@@ -100,7 +99,6 @@ function _createNote(type, title, content, isPinned) {
 
 function getDemoData() {
     return [
-
         {
             id: utilService.makeId(),
             type: 'note-txt',
@@ -279,7 +277,5 @@ function getDemoData() {
                 txt: 'Ingredients: 2 1/4 cups Gold Medal™ all-purpose flour,1 teaspoon baking soda,1/2 teaspoon salt,1 cup butter, softened,3/4 cup granulated sugar,3/4 cup packed brown sugar,1 egg,1 teaspoon vanilla,2 cups semisweet chocolate chips,1 cup coarsely chopped nuts, if desired'
             }
         },
-
-
     ]
 }

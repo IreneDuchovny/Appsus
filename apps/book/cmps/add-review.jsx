@@ -1,10 +1,8 @@
-const { useState, useEffect } = React
+const { useState } = React
 
 import { Rating } from "./rating.jsx";
 
-
 export function AddReview({addReview}) {
-
     const [review, SetReview] = useState({ fullName: '', rating: 0, readAt: '' })
 
     function updateRating(rating) {
@@ -21,8 +19,6 @@ export function AddReview({addReview}) {
         ev.preventDefault()
         addReview(review)
     }
-
-
 
     return <section className="add-review">
         <h2>Add Review</h2>
@@ -41,7 +37,6 @@ export function AddReview({addReview}) {
                 name='readAt'
                 value={review.readAt}
                 onChange={handleChange} />
-
             <button>Add review</button>
         </form>
     </section>

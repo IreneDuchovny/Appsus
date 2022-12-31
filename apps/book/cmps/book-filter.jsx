@@ -4,7 +4,6 @@ const { Link } = ReactRouterDOM
 import { bookService } from '../services/book.service.js'
 
 export function BookFilter({ onSetFilter }) {
-
     const [filterByToEdit, setFilterByToEdit] = useState(bookService.getDefaultFilter())
     
     useEffect(() => {
