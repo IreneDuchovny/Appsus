@@ -27,7 +27,6 @@ export function MailIndex() {
     useEffect(() => {
         const unsubscribe = eventBusService.on('search', (search) => {
             setFilterBy((prevFilterBy) => {return {...prevFilterBy, search: search }});
-           
         })
 
         return unsubscribe
@@ -107,7 +106,7 @@ export function MailIndex() {
                 </div>
                 <div className="mail-list">
                     {/* todo:add tabs+paging in here */}
-                    {isLoading ? <div>Loading...</div> : <MailList  getUnreadCount={getUnreadCount} mails={mails} onSaveMail={onSaveMail} onDeleteMail={onDeleteMail} onSendMail={onSendMail} />}
+                    {isLoading ? <div>Loading...</div> : <MailList setFilterBy={setFilterBy} getUnreadCount={getUnreadCount} mails={mails} onSaveMail={onSaveMail} onDeleteMail={onDeleteMail} onSendMail={onSendMail} />}
                 </div>
 
             </div>

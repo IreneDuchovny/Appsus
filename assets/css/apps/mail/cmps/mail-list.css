@@ -24,3 +24,20 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.sort-by-select{
+    margin-left: 10px;
+    width: 100px;
+    height: 30px;
+    /* border: 1px solid var(--bottom-line); */
+    border-radius: 5px;
+    /* background-color: var(--mail-list-color); */
+    /* color: var(--bottom-line); */
+    font-size: 1em;
+    /* font-weight: 800; */
+    /* padding: 5px; */
+}
+
+.no-mail{
+    margin: 20px;
+}

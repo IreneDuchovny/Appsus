@@ -12,8 +12,13 @@ import { MailDetails } from "./apps/mail/cmps/mail-details.jsx"
 
 
 export function App() {
+
+    function closeMenu(){
+        document.body.classList.toggle('menu-open')
+    }
     return <Router>
         <section className="app">
+            <div className="main-screen" onClick={()=>{closeMenu()}}></div>
             <AppHeader />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -28,6 +33,7 @@ export function App() {
                 <Route path="/note/:noteType" element={<NoteIndex />} />
                 
             </Routes>
+            
         </section>
     </Router>
 }

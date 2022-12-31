@@ -7,10 +7,15 @@ export function AppHeader() {
     const [isNote, setIsNote] = useState(false)
     const nav = useNavigate()
 
+  function closeMenu(){
+      document.body.classList.toggle('menu-open')
+  }
+
   function goMail(to) {
 
     setIsMail(true)
     setIsNote(false)
+    closeMenu()
     nav(to);
   }
 
@@ -18,7 +23,29 @@ export function AppHeader() {
 
     setIsMail(false)
     setIsNote(true)
+    closeMenu()
     nav(to);
+  }
+
+  function goHome() {
+
+    setIsMail(false)
+    setIsNote(false)
+    closeMenu()
+    nav('/');
+  }
+
+  function goAbout() {
+
+    setIsMail(false)
+    setIsNote(false)
+    closeMenu()
+    nav('/about');
+  }
+
+  function openMenu() {
+    // add body wikth class menu-open
+    document.body.classList.toggle('menu-open')
   }
 
     return <header className="app-header flex space-between ">
@@ -28,17 +55,19 @@ export function AppHeader() {
 
             {/* <h3>Apsus!</h3> */}
         </Link>
+        <button className="menu-toggle-btn" onClick={()=> openMenu()}>☰</button>
        <div className="search-bar-header">
         <SearchBar /> 
         </div>
         <nav>
-          <div className="main-nav-btns flex ">
-          <button className="go-home-btn">  <NavLink to="/">Home</NavLink></button>
-          <button className="go-about-btn"><NavLink to="/about">About</NavLink></button>
-          <button className="go-home-btn"> <a onClick={() => goMail('mail')}>E-mail</a></button>
-          <button className="go-note-btn"><a onClick={() =>goNote('note')}>Note</a></button>
+          
+          <ul className="main-nav-btns flex clean-list ">
+          <li className="go-home-btn" onClick={() => goHome()}>Home</li>
+          <li className="go-about-btn" onClick={() => goAbout()}>About</li>
+          <li className="go-home-btn"onClick={() => goMail('mail')}>E-mail</li>
+          <li className="go-note-btn" onClick={() =>goNote('note')}>Note</li>
           <img src="assets/img/avatar.png"/>
-          </div>
+          </ul>
           
         </nav>
         
