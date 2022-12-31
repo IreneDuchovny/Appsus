@@ -7,29 +7,23 @@ export function Home({ setIsBook, setIsMail, setIsNote }) {
         setIsMail(true)
         setIsNote(false)
         setIsBook(false)
-        closeMenu()
-        nav(to);
+        nav(to)
     }
 
     function goNote(to) {
         setIsMail(false)
         setIsNote(true)
         setIsBook(false)
-        closeMenu()
-        nav(to);
+        nav(to)
     }
 
     function goBook(to) {
         setIsMail(false)
         setIsNote(false)
         setIsBook(true)
-        closeMenu()
-        nav(to);
+        nav(to)
     }
 
-    function closeMenu() {
-        document.body.classList.toggle('menu-open')
-    }
 
     return <section className="home">
         <div className="main-page-container flex space-around">
