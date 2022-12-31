@@ -84,12 +84,7 @@ function getDefaultFilter() {
 function _createNotes() {
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
-        notes = []
-        notes.push(_createNote('note-txt', 'My T', 'zoom meating on mondey', true))
-        notes.push(_createNote('note-txt', 'your T', 'workout with momo', false))
-        notes.push(_createNote('note-txt', 'our T', 'life is good', false))
-        notes.push(_createNote('note-img', 'Image', 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Logo_Play_512px_clr_nGVTgYY.max-600x600.png', false))
-        notes.push(_createNote('note-video', 'Video', 'https://www.youtube.com/embed/tgbNymZ7vqY', false))
+        notes = getDemoData()
         storageService.saveToStorage(NOTE_KEY, notes)
     }
 }
@@ -101,4 +96,190 @@ function _createNote(type, title, content, isPinned) {
     note.info.title = title
     note.info[field] = content
     return note
+}
+
+function getDemoData() {
+    return [
+
+        {
+            id: utilService.makeId(),
+            type: 'note-txt',
+            isPinned: true,
+            style: {
+                backgroundColor: '#39F99F'
+            },
+            info: {
+                title: 'Home Work',
+                txt: 'Finish it by monday'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'note-txt',
+            isPinned: false,
+            style: {
+                backgroundColor: '#E52A2A'
+            },
+            info: {
+                title: 'My password',
+                txt: '1234'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'note-img',
+            isPinned: true,
+            style: {
+                backgroundColor: '#00F0EC'
+            },
+            info: {
+                title: 'Sunset',
+                url: 'https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'note-img',
+            isPinned: false,
+            style: {
+                backgroundColor: '#E6E141'
+            },
+            info: {
+                title: 'My home',
+                url: 'https://homesbyhowe.com.au/wp-content/uploads/2022/07/2668_hbh_dunnartthrosby_002-scaled.jpg'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'note-video',
+            isPinned: false,
+            style: {
+                backgroundColor: '#0EB003'
+            },
+            info: {
+                title: 'Good vibes',
+                url: 'https://www.youtube.com/embed/3SeOVVJXOUo'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'note-todos',
+            isPinned: true,
+            style: {
+                backgroundColor: '#DB72E9'
+            },
+            info: {
+                title: 'Morning routine',
+                todos:[
+                    {
+                        txt:'wake up',
+                        isDone: true
+                    },
+                    {
+                        txt:'Shower',
+                        isDone: true
+                    },
+                    {
+                        txt:'Drink coffe',
+                        isDone: false
+                    },
+                    {
+                        txt:'Codeee',
+                        isDone: false
+                    }
+                ] 
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'note-todos',
+            isPinned: false,
+            style: {
+                backgroundColor: '#F27373'
+            },
+            info: {
+                title: 'Groceries',
+                todos:[
+                    {
+                        txt:'milk',
+                        isDone: false
+                    },
+                    {
+                        txt:'bread',
+                        isDone: false
+                    },
+                    {
+                        txt:'meat',
+                        isDone: false
+                    },
+                    {
+                        txt:'onions',
+                        isDone: false
+                    },
+                    {
+                        txt:'chips',
+                        isDone: false
+                    },
+                    {
+                        txt:'gum',
+                        isDone: false
+                    },
+                    {
+                        txt:'cake',
+                        isDone: false
+                    }
+                ] 
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'note-img',
+            isPinned: false,
+            style: {
+                backgroundColor: '#B553EA'
+            },
+            info: {
+                title: 'Motivation',
+                url: 'https://nationaltoday.com/wp-content/uploads/2021/10/Motivation-and-Inspiration-Day.jpg'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'note-video',
+            isPinned: true,
+            style: {
+                backgroundColor: '#E66565'
+            },
+            info: {
+                title: 'To watch later',
+                url: 'https://www.youtube.com/embed/N775KsWQVkw'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'note-video',
+            isPinned: true,
+            style: {
+                backgroundColor: '#5CB8FF'
+            },
+            info: {
+                title: 'History',
+                url: 'https://www.youtube.com/embed/ldjwAdWo0kA'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: 'note-txt',
+            isPinned: true,
+            style: {
+                backgroundColor: '#F5EB7F'
+            },
+            info: {
+                title: 'Grandmas recipe',
+                txt: 'Ingredients: 2 1/4 cups Gold Medal™ all-purpose flour,1 teaspoon baking soda,1/2 teaspoon salt,1 cup butter, softened,3/4 cup granulated sugar,3/4 cup packed brown sugar,1 egg,1 teaspoon vanilla,2 cups semisweet chocolate chips,1 cup coarsely chopped nuts, if desired'
+            }
+        },
+
+
+    ]
 }
