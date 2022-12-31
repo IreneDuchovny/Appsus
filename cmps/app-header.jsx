@@ -64,11 +64,13 @@ export function AppHeader() {
           <ul className="main-nav-btns flex clean-list ">
           <li className="go-home-btn" onClick={() => goHome()}>Home</li>
           <li className="go-about-btn" onClick={() => goAbout()}>About</li>
-          <li className="go-home-btn"onClick={() => goMail('mail')}>E-mail</li>
+          <li className="go-mail-btn"onClick={() => goMail('mail')}>E-mail</li>
           <li className="go-note-btn" onClick={() =>goNote('note')}>Note</li>
           <img src="assets/img/avatar.png"/>
           </ul>
           
+          
+         
         </nav>
         
     </header>

@@ -43,6 +43,7 @@ nav a.active {
     color: rgb(99, 98, 98);
     font-size: 1em;
     /* font-weight: bold; */
+    text-align: center;
     border: none;
     transition: transform 200ms, box-shadow 200ms;
     margin: 6px;
