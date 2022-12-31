@@ -12,7 +12,7 @@ export function SearchBar(){
     }
 
     return (
-        <input className="searchbar-input" type="search" placeholder = 'Search..'
+        <input className="searchbar-input" type="search" placeholder = 'Search'
         value = {filterByTxt}
         onChange={handleChange} />
     )

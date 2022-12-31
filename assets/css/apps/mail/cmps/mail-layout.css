@@ -2,7 +2,7 @@
     --m: 890px;
     --w: 1060px; */
 
-@media (max-width: 750px) {
+@media (max-width: 940px) {
     .compose-btn {
         z-index: 1;
         position: fixed;
@@ -14,17 +14,17 @@
         height: 80px;
         /* border: 2px solid black; */
     }
-   
-    .main-mail-preview{
+
+    .main-mail-preview {
         grid-template-columns: 0.2fr 1fr 1fr;
         grid-template-rows: 1fr;
-        
+
         grid-template-areas: "starred-checkbox from-email email-subject email-short-body date-email ";
         padding: 10px;
         align-items: center;
     }
 
-  /* .main-mail-preview  {
+    /* .main-mail-preview  {
     grid-template-columns: 1fr 0.2fr;
     grid-template-rows: 1fr 1fr 1fr;
         grid-template-areas: "email-from email-date"
@@ -44,9 +44,10 @@
     /* .starred-checkbox {
         display: none;
       } */
-      .email-short-body {
+    .email-short-body {
         display: none;
     }
+
     .app-header {
         z-index: 1;
     }
@@ -73,7 +74,6 @@
         cursor: pointer;
     }
 
-
     .main-nav-btns {
         position: fixed;
         top: 0;
@@ -98,8 +98,6 @@
         z-index: 1;
     }
 
-
-
     body.menu-open .main-screen {
         pointer-events: auto;
         display: block;
@@ -108,10 +106,9 @@
 }
 
 
-
-@media (max-width: 920px)and (min-width: 750px) {
+@media (max-width: 940px)and (min-width: 600px) {
     .searchbar-input {
-        width: 30vw;
+        width: 70vw;
     }
 }
 
@@ -138,7 +135,6 @@
     height: 20px;
     font-size: 0.85em;
 }
-
 
 @media (max-width: 1200px) {
     .main-page-container {
@@ -184,7 +180,6 @@
     } */
 }
 
-
 @media (min-width: 750px) {
 
     .compose-btn {
@@ -195,7 +190,7 @@
         font-size: 16px;
     }
 
-    .main-mail-preview{
+    .main-mail-preview {
         grid-template-columns: 0.2fr 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr;
         grid-template-areas: "starred-checkbox from-email email-subject email-short-body date-email ";

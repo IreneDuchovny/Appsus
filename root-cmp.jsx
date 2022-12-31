@@ -1,4 +1,5 @@
 const { Route, Routes } = ReactRouterDOM
+const { useState } = React
 const Router = ReactRouterDOM.HashRouter
 
 import { AppHeader } from "./cmps/app-header.jsx"
@@ -16,15 +17,21 @@ import { BookEdit } from "./apps/book/pages/book-edit.jsx"
 
 export function App() {
 
+    const [isMail, setIsMail] = useState(false)
+    const [isNote, setIsNote] = useState(false)
+    const [isBook, setIsBook] = useState(false)
+
+
+
     function closeMenu() {
         document.body.classList.toggle('menu-open')
     }
     return <Router>
         <section className="app">
             <div className="main-screen" onClick={() => { closeMenu() }}></div>
-            <AppHeader />
+            <AppHeader isBook={isBook}isMail={isMail} isNote={isNote} setIsBook={setIsBook} setIsMail={setIsMail} setIsNote={setIsNote }/>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home setIsBook={setIsBook} setIsMail={setIsMail} setIsNote={setIsNote } />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/mail" element={<MailIndex />} >
                     <Route path="/mail/:mailId" element={<MailDetails />} />

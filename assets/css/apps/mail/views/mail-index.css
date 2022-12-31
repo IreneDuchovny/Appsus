@@ -3,7 +3,6 @@
     flex-direction: row; */
   /* align-items: center; */
     /* width: 100vw; */
-   
 }
 
 .side-bar{
@@ -32,10 +31,9 @@
     /* border: none; */
     border-radius: 30px;
     padding: 10px 40px 10px 40px ;
-    
     border: 1px solid var(--border-color2);
     /* background: linear-gradient(to right, #FF00FF, #0000FF, #660099); */
-   
+
     cursor: pointer; 
 }
 
