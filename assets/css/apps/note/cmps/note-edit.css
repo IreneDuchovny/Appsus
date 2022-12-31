@@ -15,15 +15,16 @@
     
 
 }
+
 .note-edit form label{
     position: relative;
 }
+
 .note-edit form input{
     width: 95%;
     height: 60px;
     font-size: 1.5em;
     border: none;
-    /* border-radius: 0.3em; */
     padding-left: 1em;
     outline: none;
     border-bottom: 1px solid gray;
@@ -54,8 +55,7 @@
     background-color: lightgray;
 }
 
-.note-edit .btn-close{
-    /* position: absolute; */
+.note-edit .btn-close,.btn-add{
     margin-top: 1em;
     float: right;
     border: none;

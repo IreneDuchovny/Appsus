@@ -1,6 +1,7 @@
 const { useState, useEffect, useRef } = React
 
 import { noteService } from "../services/note.service.js"
+import { utilService } from "../../../services/util.service.js"
 
 export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
     const [noteType, setNoteType] = useState('txt')
@@ -10,11 +11,23 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
     const fieldRef = useRef('txt')
 
     useEffect(() => {
+
+        const queryString = window.location.href.split('?')[1]
+        const queryStringParams = new URLSearchParams(queryString)
+        if (queryStringParams.get('title') && queryStringParams.get('txt')) {
+            const noteFromMail={id:'',style:{},isPinned:false,info:{title:'',txt:''}}
+            noteFromMail.info.title = queryStringParams.get('title')
+            noteFromMail.info.txt = queryStringParams.get('txt')
+            noteFromMail.style = {}
+            noteFromMail.id = utilService.makeId()
+            noteToEdit = noteFromMail 
+        }
+
         if (noteToEdit) {
-            if(noteToEdit.type === 'note-todos'){
-                const txt = noteToEdit.info.todos.map(todo=> todo.txt).join(',')
+            if (noteToEdit.type === 'note-todos') {
+                const txt = noteToEdit.info.todos.map(todo => todo.txt).join(',')
                 //delete noteToEdit.info.todos
-                noteToEdit.info.txt=txt
+                noteToEdit.info.txt = txt
             }
             setNote(noteToEdit)
             onNoteTypeChange(noteToEdit.type)
@@ -30,16 +43,16 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
     function saveNote(ev) {
         ev.preventDefault()
         if (note.type === 'note-video') checkVideoUrl()
-        if (note.type === 'note-todos'){
+        if (note.type === 'note-todos') {
             let todos = note.info.txt.split(',')
-            todos = todos.map(todo=>({txt: todo, isDone: false}))
+            todos = todos.map(todo => ({ txt: todo, isDone: false }))
             delete note.info.txt
             note.info.todos = todos
         }
         onSaveNote(note)
         setIsExpended(false)
         setNote(noteService.getEmptyNote(noteType))
-        if(noteToEdit) endEditing()
+        if (noteToEdit) endEditing()
     }
 
     function checkVideoUrl() {
@@ -101,8 +114,8 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
                         <button type="button" onClick={() => onNoteTypeChange('note-video')}><i className="fa-brands fa-youtube"></i></button>
                         <button type="button" onClick={() => onNoteTypeChange('note-todos')}><i className="fa-solid fa-list-check"></i></button>
                     </section>}
-                    <button type='submit' hidden={true}></button>
                 </label>
+                {isExpended && <button className='btn-add' type='submit'> Add</button>}
                 {isExpended && <button className='btn-close' type="button" onClick={onClose}>Close</button>}
 
             </form>
