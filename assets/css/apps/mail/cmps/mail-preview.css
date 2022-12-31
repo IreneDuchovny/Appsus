@@ -28,7 +28,7 @@
    cursor: pointer;
   
 } */
-.star-btn,.trash-btn,.expant-btn{
+.star-btn,.trash-btn,.expant-btn,.note-btn{
    border: none;
    background-color: var(--white);
    /* background-color: none; */
