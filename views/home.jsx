@@ -31,6 +31,9 @@ export function Home( { setIsBook, setIsMail, setIsNote}) {
         nav(to);
       }
     
+      function closeMenu() {
+        document.body.classList.toggle('menu-open')
+      }
 
     return <section className="home">
         <div className="main-page-container flex space-around">
