@@ -27,7 +27,6 @@ export function NoteBtns({ note, onRemoveNote, onEditing, onDuplicateNote, onBgc
         const queryStringParams = `?subject=${subject}&body=${body}`
         const newUrl = '../' + '/mail/new/compose' + queryStringParams
         navigate(newUrl)
-
     }
 
     return <section className="note-btns flex">

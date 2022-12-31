@@ -7,7 +7,6 @@ import {BookList} from '../cmps/book-list.jsx'
 import { BookFilter } from '../cmps/book-filter.jsx'
 
 export function BookIndex() {
-
     const [books, SetBooks] = useState([])
     let [filterBy, setFilterBy] = useState(bookService.getDefaultFilter())
 
@@ -22,7 +21,6 @@ export function BookIndex() {
         })
 
         return unsubscribe
-
     }, [])
 
     function loadBooks() {

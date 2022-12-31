@@ -1,7 +1,6 @@
 const { useState, useEffect, useRef } = React
 
 import { noteService } from "../services/note.service.js"
-import { utilService } from "../../../services/util.service.js"
 
 export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
     const [noteType, setNoteType] = useState('txt')
@@ -11,7 +10,6 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
     const fieldRef = useRef('txt')
 
     useEffect(() => {
-
         const queryString = window.location.href.split('?')[1]
         const queryStringParams = new URLSearchParams(queryString)
         if (queryStringParams.get('title') && queryStringParams.get('txt')) {
@@ -77,7 +75,11 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
                 break;
         }
         setNoteType(newNoteType)
-        if (!noteToEdit) setNote(noteService.getEmptyNote(newNoteType))
+        const newNote = noteService.getEmptyNote(newNoteType)
+        if(newNoteType==="note-todos"){
+            newNote.info.txt = ''
+        }
+        if (!noteToEdit) setNote(newNote)
     }
 
     function onClose() {

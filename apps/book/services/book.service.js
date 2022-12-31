@@ -39,7 +39,6 @@ function removeBook(bookId) {
 
 function saveBook(book) {
   book.thumbnail = book.thumbnail !== '' ? book.thumbnail : "../../../assets/img/default-book.jpg"
-  
   if (book.id) {
     return asyncStorageService.put(BOOK_KEY, book)
   } else {
@@ -58,16 +57,15 @@ function addReview(bookId, review) {
       }
       return asyncStorageService.put(BOOK_KEY, book)
     })
-
 }
 
-function removeReview(bookId,reviewId){
+function removeReview(bookId, reviewId) {
   return getBook(bookId)
-  .then(book => {
-    const idx = book.reviews.findIndex(review => review.id === reviewId)
-    book.reviews.splice(idx,1)
-    return asyncStorageService.put(BOOK_KEY, book)
-  })
+    .then(book => {
+      const idx = book.reviews.findIndex(review => review.id === reviewId)
+      book.reviews.splice(idx, 1)
+      return asyncStorageService.put(BOOK_KEY, book)
+    })
 }
 
 function getEmptyBook(title = '', subtitle = '', authors = [], description = '', pageCount = '', categories = [], thumbnail = '', language = '', publishedDate = '', price = '', currency = '', isOnSale = false) {

@@ -1,5 +1,5 @@
-const { useState, useEffect, useRef } = React
-const { Link, useParams } = ReactRouterDOM
+const { useState, useEffect } = React
+const { useParams } = ReactRouterDOM
 
 import { noteService } from "../services/note.service.js"
 import { eventBusService } from "../../../services/event-bus.service.js"
@@ -9,7 +9,6 @@ import { NoteEdit } from "../cmps/note-edit.jsx"
 import { NoteSideBar } from "../cmps/note-side-bar.jsx"
 
 export function NoteIndex() {
-
     const [notes, setNotes] = useState([])
     const [isLoading, setIsLoading] = useState(null)
     let [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
@@ -27,10 +26,7 @@ export function NoteIndex() {
             loadNotes()
         })
 
-
-
         return unsubscribe
-
     }, [])
 
     function loadNotes() {
@@ -93,8 +89,6 @@ export function NoteIndex() {
 
     return <section className="note-index">
         {isLoading && <h2>loading..</h2>}
-
-
         <div className="note-index-container flex">
             <NoteSideBar />
             <div className="note-list-container">
@@ -108,5 +102,4 @@ export function NoteIndex() {
             </div>
         </div>
     </section>
-
 }
