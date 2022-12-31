@@ -1,21 +1,11 @@
-const { useEffect, useState, useRef } = React
-const Router = ReactRouterDOM.HashRouter
-// const {useHistory} = HistoryLibrary
-const { Route, Routes, Link, useNavigate, useParams, useHistory } = ReactRouterDOM
+const { useEffect, useState } = React
+const { useNavigate } = ReactRouterDOM
 import { mailService } from '../services/mail.service.js'
 
 export function MailFolderList({ onSetFilter, unreadCount }) {
     const nav = useNavigate()
-    // const History = useHistory()
     const [filterByFolder, setFilterByFolder] = useState(mailService.getDefaultFilter())
-    const [selectedTab, setSelectedTab] = useState(1);
-    const elInputRef = useRef(null)
-
-    // useEffect(() => {
-    //     getUnreadCount()
-
-    // }, [])
-
+    const [selectedTab, setSelectedTab] = useState(1)
 
     useEffect(() => {
         onSetFilter(filterByFolder)
@@ -41,12 +31,11 @@ export function MailFolderList({ onSetFilter, unreadCount }) {
 
     function handleClick(status) {
         setFilterByFolder(() => ({ 'status': status }))
-
         nav('/mail')
     }
+
     function handleUnread() {
         setFilterByFolder(() => ({ 'isRead': false, 'status': 'inbox' }))
-
         nav('/mail')
     }
 
@@ -54,8 +43,6 @@ export function MailFolderList({ onSetFilter, unreadCount }) {
         setFilterByFolder(() => ({ 'isStarred': true, 'status': 'inbox' }))
         nav('/mail')
     }
-
-
 
     return (
         <ul className="side-bar-list  clean-list">

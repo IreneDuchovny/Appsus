@@ -1,3 +1,25 @@
-.mail-compose-container form{
+.mail-compose-container {
+    background-color: white;
+}
 
+.recipients,
+.subject,
+.body {
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.send-btn {
+    width: 70px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color2);
+    cursor: pointer;
+    text-align: center;
+}
+
+.new-msg-hdr {
+    font-weight: bold;
 }

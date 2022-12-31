@@ -1,4 +1,3 @@
-// console.log('Hi')
 
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/storage.service.js'
@@ -34,8 +33,6 @@ function _createMail(name, subject, body, to, status = 'inbox', isRead = false, 
 }
 
 //returns a promise with all mails
-
-
 function query(filterBy = getDefaultFilter()) {
 
     return asyncStorageService.query(MAIL_KEY)
@@ -59,7 +56,6 @@ function query(filterBy = getDefaultFilter()) {
             if (filterBy.isStarred !== undefined) {
                 mails = mails.filter(mail => mail.isStarred === filterBy.isStarred)
             }
-
             return mails
         })
 }
@@ -82,36 +78,35 @@ function _createMails() {
             _createMail('XYZ Inc', 'Job offer', 'Congratulations [name]! We are pleased to offer you the position of [position] at XYZ Inc. The offer includes a salary of [salary] per year, with benefits including [benefits]. Please let us know if you accept the offer by [date]. We look forward to having you on the team!', 'jobs@xyzinc.com'),
             _createMail('ABC Company', 'Customer feedback', 'Hello [name], we appreciate your recent purchase from ABC Company and would love to hear your feedback. Please take a few minutes to complete the survey below. Your feedback helps us improve our products and services. Thank you for your business and for taking the time to provide feedback. [survey link]', 'customer.service@abc.com')
         ]
-        console.log('savedMails', savedMails);
         storageService.saveToStorage(MAIL_KEY, mails)
     }
-
 }
 
 //returns a promise with the mail
 function getMailById(mailId) {
     return asyncStorageService.get(MAIL_KEY, mailId).catch(err => {
-        console.log('Mail not FOUND', err);
+        console.error('Mail not FOUND', err)
     })
 }
 
 //deletes a mail by id
 function deleteMail(mailId) {
     return asyncStorageService.remove(MAIL_KEY, mailId).catch(err => {
-        console.log('Mail not REMOVED', err);
+        console.error('Mail not REMOVED', err)
     })
 }
 
 function sendMail(subject, body, to, status) {
     const mail = _createMail(loggedinUser.fullName, subject, body, to, status, true)
     return asyncStorageService.post(MAIL_KEY, mail).catch(err => {
-        console.log('Mail not SENT', err);
+        console.error('Mail not SENT', err)
     })
 }
+
 //saved email after changes
 function saveMail(mail) {
     return asyncStorageService.put(MAIL_KEY, mail).catch(err => {
-        console.log('Mail not SAVED', err);
+        console.error('Mail not SAVED', err)
     })
 }
 
