@@ -28,10 +28,11 @@
    cursor: pointer;
   
 } */
-.star-btn,.trash-btn,.expant-btn,.note-btn{
+.star-btn,.trash-btn,.expant-btn,.note-btn,.back-btn{
    border: none;
    background-color: var(--white);
    /* background-color: none; */
+   cursor: pointer;
 }
 .main-mail-preview {
    display: grid;

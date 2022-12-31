@@ -20,12 +20,21 @@ export function MailDetails({onDeleteMail}) {
                setMail(mail)
             })
    }
+
+   function handleNoteSend() {
+      const queryStringParams = `?title=${mail.subject}&txt=${mail.body}`
+      const newUrl = '../' + '/note' + queryStringParams
+      navigate(newUrl)
+  }
     if (!mail) return <div>Loading...</div>
     return <div className="full-details-mail">
+       
+               
          <div className="title-mail flex space-between"> <h3 className="email-subject">{mail.subject} </h3>
          <div className="icons-btns">
-         <button className="back fa fa-arrow-left" onClick= {()=> navigate('/mail')} ></button>
-         <button className="fa fa-trash-o" title="Delete email" onClick={()=>{onDeleteMail(mail.id); navigate('/mail')}}></button>
+             <button className="fa-solid fa-paper-plane note-btn" onClick={handleNoteSend}></button>
+         <button className="back fa fa-arrow-left back-btn" onClick= {()=> navigate('/mail')} ></button>
+         <button className="fa fa-trash-o trash-btn" title="Delete email" onClick={()=>{onDeleteMail(mail.id); navigate('/mail')}}></button>
          </div>
          </div>
             <p className="from-email">from: {mail.name} {`<${mail.to}>`}</p>
