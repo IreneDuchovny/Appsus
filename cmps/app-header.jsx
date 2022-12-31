@@ -61,7 +61,7 @@ export function AppHeader() {
         </div>
         <nav>
           
-          <ul className="main-nav-btns flex clean-list ">
+          <ul style={{width: 'fit-content'}} className="main-nav-btns flex clean-list ">
           <li className="go-home-btn" onClick={() => goHome()}>Home</li>
           <li className="go-about-btn" onClick={() => goAbout()}>About</li>
           <li className="go-mail-btn"onClick={() => goMail('mail')}>E-mail</li>

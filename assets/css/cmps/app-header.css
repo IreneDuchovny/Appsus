@@ -67,7 +67,7 @@ nav a.active {
 
 .searchbar-input {
     width: 400px;
-    height: 30px;
+    height: 40px;
     border-radius: 50px;
     border: 1px solid var(--border-color);
     /* border-radius: 5px; */
@@ -88,6 +88,11 @@ nav a.active {
 .main-nav-btns li {
 
     cursor: pointer;
+}
+
+.main-nav-btns{
+    justify-content: end;
+    width: fit-content;
 }
 
 .menu-toggle-btn{
