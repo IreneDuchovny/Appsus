@@ -77,7 +77,11 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
                 break;
         }
         setNoteType(newNoteType)
-        if (!noteToEdit) setNote(noteService.getEmptyNote(newNoteType))
+        const newNote = noteService.getEmptyNote(newNoteType)
+        if(newNoteType==="note-todos"){
+            newNote.info.txt = ''
+        }
+        if (!noteToEdit) setNote(newNote)
     }
 
     function onClose() {
