@@ -50,21 +50,21 @@ export function MailPreview({ mail, onDeleteMail, onSaveMail, getUnreadCount }) 
 
     return <div className="expend-prev flex column" >
 
-        <div className={isRead ? "main-mail-preview flex row " : "main-mail-preview flex row space-between unread"} onClick={() => {
+        <div className={isRead ? "main-mail-preview flex row " : "main-mail-preview  flex row unread"} onClick={() => {
             onClickMail()
         }}>
 
             {/* <input className="starred-checkbox fa-star-o" title="Starred email"  defaultChecked={isStarred ? 'cheched' : ''} /> */}
-            <button className={isStarred ? "fa fa-star starred-checkbox" : "fa fa-star-o starred-checkbox"} title="Starred email" onClick={() => {
+            <div className={isStarred ? "starred-checkbox fa fa-star " : "starred-checkbox fa fa-star-o "} title="Starred email" onClick={() => {
                 onStarMail()
-            }}></button>
-            <div className="from-email">{mail.name} </div>
-            <div className="email-subject">{mail.subject}</div>
-            <div className="email-short-body"><LongTxt txt={mail.body || ''} length={40} /></div>
+            }}></div>
+            <div className=" from-email">{mail.name} </div>
+            <div className=" email-subject">{mail.subject}</div>
+            <div className=" email-short-body"><LongTxt txt={mail.body || ''} length={40} /></div>
 
             {/* <div className="email-short-body">{mail.body}</div> */}
             {/* create short body */}
-            <div className="email-date">{formatDate(mail.sentAt)}</div>
+            <div className=" email-date">{formatDate(mail.sentAt)}</div>
         </div>
 
         {/* //expended section */}

@@ -37,11 +37,8 @@
 .main-mail-preview {
    display: grid;
    /* grid-template-columns: 0.2fr 1fr 1fr; */
-   grid-template-columns: 0.2fr 1fr 1fr 1fr 1fr;
-   grid-template-rows: 1fr;
-   grid-template-areas: "starred-checkbox name from-email email-subject date-email ";
-   padding: 10px;
-   align-items: center;
+  
+
    border-bottom: 1px solid var(--bottom-line);
    cursor: pointer;
 }

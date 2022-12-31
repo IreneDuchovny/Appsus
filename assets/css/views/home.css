@@ -6,7 +6,6 @@
     
 }
 
-
 .mail-container, .notes-container, .books-container {
     display: flex;
     flex-direction: column;
