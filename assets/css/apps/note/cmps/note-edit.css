@@ -67,10 +67,29 @@
 @media (max-Width: 700px ){
     .note-edit form{
         width: 90vw;
-    
+    }
+
+    .note-edit{
+        z-index: 999;
+        background-color: white;
     }
 
     .note-edit form input{
         height: 40px;
+        width: 90%;
+    }
+
+    .note-edit-btns button{
+        font-size: 0.8em;
+        width: 30px;
+        height: 30px;
+    }
+
+    .note-edit-btns{
+        position: absolute;
+        right: 2.5em;
+        width: 3em;
+        margin-right: 0.1em;
+        gap: 0;
     }
 }

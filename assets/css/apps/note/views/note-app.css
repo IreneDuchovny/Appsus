@@ -23,4 +23,9 @@
     .note-lists-container {
         margin-top: 20%
     }
+
+    .list-name{
+        padding-left: 0;
+        margin-bottom: 0.5em;
+    }
 }

@@ -54,11 +54,16 @@ iframe{
 
 @media (max-Width: 700px) {
     .note-list{
+        width: 90vw;
         columns: 1;
         column-width: 350px ;
+        margin: 0 auto;
+        padding: 0;
     }
 
     .note-list>li{
         min-width: 300px;
+        margin: 0 auto;
+        margin-bottom: 20px;
     }
 }

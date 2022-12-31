@@ -74,7 +74,7 @@ export function NoteEdit({ onSaveNote, noteToEdit, endEditing }) {
                 fieldRef.current = 'url'
                 break;
             case 'note-todos':
-                placeHolderRef.current = 'Enter a comma separated list...'
+                placeHolderRef.current = 'Enter a list...'
                 fieldRef.current = 'txt'
                 break;
         }
