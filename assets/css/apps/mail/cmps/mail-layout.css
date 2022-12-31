@@ -180,7 +180,7 @@
     } */
 }
 
-@media (min-width: 750px) {
+@media (min-width: 940px) {
 
     .compose-btn {
         background: linear-gradient(to right, #fc3c71, #fa3ca2, #7e3bea, #3e49fe, #11c8f3);

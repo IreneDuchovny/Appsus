@@ -48,7 +48,6 @@ export function Home({ setIsBook, setIsMail, setIsNote }) {
                     <img src="assets/img/books-logo.png" alt="" />
                     <h2> Books</h2>
                 </div></Link>
-
         </div>
     </section>
 }
