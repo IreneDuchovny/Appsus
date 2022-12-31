@@ -1,7 +1,7 @@
 
 const { Link, useNavigate } = ReactRouterDOM
 const { useEffect, useState, useRef, Fragment } = React
-import { Longtxt } from '/long-txt.jsx'
+import { LongTxt } from '/long-txt.jsx'
 
 export function MailPreview({ mail, onDeleteMail, onSaveMail, getUnreadCount }) {
     const [isStarred, setIsStarred] = useState(mail.isStarred)
@@ -11,6 +11,7 @@ export function MailPreview({ mail, onDeleteMail, onSaveMail, getUnreadCount }) 
     // const [isDraft, setIsDraft] = useState(mail.isDraft)
     // const [isTrash, setIsTrash] = useState(mail.isTrash)
     // const [isUnread, setIsUnread] = useState(mail.isUnread)
+    console.log('mail', mail)
 
     const [isExpanded, setIsExpanded] = useState(false)
 
@@ -59,9 +60,9 @@ export function MailPreview({ mail, onDeleteMail, onSaveMail, getUnreadCount }) 
             }}></button>
             <div className="from-email">{mail.name} </div>
             <div className="email-subject">{mail.subject}</div>
-            {/* <div className="email-short-body"><Longtxt txt={mail.body || ""} length={20} /></div> */}
+            <div className="email-short-body"><LongTxt txt={mail.body || ''} length={40} /></div>
 
-            <div className="email-short-body">{mail.body}</div>
+            {/* <div className="email-short-body">{mail.body}</div> */}
             {/* create short body */}
             <div className="email-date">{formatDate(mail.sentAt)}</div>
         </div>

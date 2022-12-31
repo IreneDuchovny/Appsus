@@ -4,6 +4,17 @@
 
 
 @media (max-width: 750px) {
+.compose-btn {
+    z-index: 1;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color:var(--border-color2);
+    font-weight: 600;
+    font-size: 2em;
+    height: 80px;
+    /* border: 2px solid black; */
+}
 
     .app-header {
         z-index: 1;
@@ -148,6 +159,13 @@
 }
 
 
-/* @media (min-width: 1200px) {
-        
-    } */
+ @media (min-width: 750px) {
+   
+    .compose-btn{
+    background: linear-gradient(to right, #fc3c71, #fa3ca2, #7e3bea, #3e49fe,#11c8f3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    font-weight: 600;
+    font-size: 16px;
+    } 
+}
