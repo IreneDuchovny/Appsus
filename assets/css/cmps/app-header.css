@@ -83,3 +83,12 @@ nav a.active {
     margin: 0 10px;
     align-self: center;
 }
+
+.main-nav-btns li {
+
+    cursor: pointer;
+}
+
+.menu-toggle-btn{
+    display: none;
+}
