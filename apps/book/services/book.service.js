@@ -38,6 +38,8 @@ function removeBook(bookId) {
 }
 
 function saveBook(book) {
+  book.thumbnail = book.thumbnail !== '' ? book.thumbnail : "../../../assets/img/default-book.jpg"
+  
   if (book.id) {
     return asyncStorageService.put(BOOK_KEY, book)
   } else {

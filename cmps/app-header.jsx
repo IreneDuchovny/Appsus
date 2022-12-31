@@ -52,16 +52,18 @@ export function AppHeader({ isBook, isMail, isNote, setIsBook, setIsMail, setIsN
   }
 
   return <header className="app-header flex space-between ">
+
     <Link to="/">
-      {isMail ? <div><img src="assets/img/mail-logo.png" /></div> :
-        (isNote ? <div><img src="assets/img/notes-logo.png" /></div> : (isBook ? <div><img src="assets/img/books-logo.png" /></div> :
-          <img src="assets/img/appsus-logo-1.png" alt="" />))}
+      {isMail ? <div><img src="assets/img/mail-logo.png" /></div> : (isNote ? <div><img src="assets/img/notes-logo.png" /></div> : <img src="assets/img/appsus-logo-1.png" alt="" />)}
+
+      {/* <h3>Apsus!</h3> */}
     </Link>
     <button className="menu-toggle-btn" onClick={() => openMenu()}>☰</button>
     <div className="search-bar-header">
       <SearchBar />
     </div>
     <nav>
+
       <ul className="main-nav-btns flex clean-list ">
         <li className="go-home-btn" onClick={() => goHome()}>Home</li>
         <li className="go-about-btn" onClick={() => goAbout()}>About</li>
@@ -70,6 +72,10 @@ export function AppHeader({ isBook, isMail, isNote, setIsBook, setIsMail, setIsN
         <li className="go-note-btn" onClick={() => goBook('book')}>Book</li>
         <img src="assets/img/avatar.png" />
       </ul>
+
+
+
     </nav>
+
   </header>
 }
