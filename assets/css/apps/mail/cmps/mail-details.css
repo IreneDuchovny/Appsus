@@ -1,8 +1,13 @@
 .icons-btns button{
    margin:  5px; 
+   background-color: transparent;
 }
 
 .full-details-mail{
     width: 75vw;
+    margin-top: 20px;
+    margin-left:25px;
+    /* background-color: white;  */
+    width: 70vw;
 }
 
